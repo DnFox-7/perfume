@@ -11,261 +11,185 @@
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Poppins;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins}
 
-body{
-background:#f5f5f5;
-}
+body{background:#f3f3f3}
 
 /* NAVBAR */
 
 nav{
-
 background:black;
 color:white;
-
 display:flex;
 justify-content:space-between;
 align-items:center;
-
-padding:18px 8%;
-
+padding:15px 8%;
 position:sticky;
 top:0;
-
-z-index:999;
-
+z-index:999
 }
 
-.logo{
-font-size:22px;
-font-weight:600;
-}
+.logo{font-size:20px;font-weight:600}
 
-.menu{
+.menu{display:flex;gap:25px}
 
-display:flex;
-gap:25px;
+.menu a{color:white;text-decoration:none}
 
-}
+.menu a:hover{color:#d4af37}
 
-.menu a{
-color:white;
-text-decoration:none;
-}
+.hamburger{display:none;font-size:24px;cursor:pointer}
 
-.menu a:hover{
-color:#d4af37;
-}
-
-/* MOBILE MENU */
-
-.hamburger{
-display:none;
-font-size:24px;
-cursor:pointer;
-}
-
-/* SEARCH */
+/* BUSCA */
 
 .search{
-
-max-width:1100px;
+max-width:1000px;
 margin:30px auto;
-
 display:flex;
-justify-content:center;
-
+justify-content:center
 }
 
 .search input{
-
 width:80%;
 padding:12px;
-
 border-radius:30px;
-border:1px solid #ddd;
-
+border:1px solid #ccc
 }
 
 /* FILTROS */
 
 .filtros{
-
 display:flex;
 justify-content:center;
 gap:10px;
 flex-wrap:wrap;
-
-margin-bottom:30px;
-
+margin-bottom:25px
 }
 
 .filtros button{
-
 border:none;
-padding:10px 18px;
-
+padding:8px 15px;
 background:white;
-
 border-radius:30px;
-
 cursor:pointer;
-
-box-shadow:0 3px 8px rgba(0,0,0,0.1);
-
+box-shadow:0 2px 8px rgba(0,0,0,0.1)
 }
 
 .filtros button:hover{
 background:#d4af37;
-color:white;
+color:white
 }
 
-/* GRID */
+/* PRODUTOS */
 
 .produtos{
-
 max-width:1200px;
 margin:auto;
-
 display:grid;
-
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-
 gap:25px;
-
-padding:20px;
-
+padding:20px
 }
 
-/* CARD */
-
 .card{
-
 background:white;
-
 border-radius:10px;
-
 overflow:hidden;
-
-box-shadow:0 10px 25px rgba(0,0,0,0.1);
-
-transition:0.4s;
-
-position:relative;
-
+box-shadow:0 10px 20px rgba(0,0,0,0.1);
+transition:0.3s
 }
 
 .card:hover{
-
-transform:translateY(-8px) scale(1.02);
-
-box-shadow:0 20px 40px rgba(0,0,0,0.2);
-
+transform:translateY(-8px);
+box-shadow:0 20px 40px rgba(0,0,0,0.2)
 }
 
 .card img{
-
 width:100%;
 height:220px;
-
-object-fit:cover;
-
+object-fit:cover
 }
 
-.info{
-padding:15px;
-}
+.info{padding:15px}
 
 .preco{
-
 color:#d4af37;
 font-weight:600;
-margin:8px 0;
-
+margin:5px 0
 }
 
-.estrelas{
-color:gold;
-font-size:14px;
-margin-bottom:6px;
+.estrelas{color:gold;font-size:14px}
+
+.qtd{
+width:60px;
+margin-top:5px
 }
 
 .btn{
-
 background:black;
 color:white;
-
 border:none;
-
 padding:10px;
-
 width:100%;
-
-cursor:pointer;
-
+margin-top:8px;
+cursor:pointer
 }
 
 /* CARRINHO */
 
 .cart{
-
 position:fixed;
 right:-350px;
 top:0;
-
 width:320px;
 height:100%;
-
 background:white;
-
 box-shadow:-5px 0 20px rgba(0,0,0,0.2);
-
 padding:20px;
-
 transition:0.4s;
-
-z-index:1000;
-
+z-index:1000
 }
 
-.cart.open{
-right:0;
-}
+.cart.open{right:0}
 
-.cart h2{
-margin-bottom:20px;
-}
+.cart h2{margin-bottom:20px}
 
 .cart-item{
-
 display:flex;
 justify-content:space-between;
-margin-bottom:10px;
+margin-bottom:8px;
+font-size:14px
+}
 
+.remove{
+color:red;
+cursor:pointer
+}
+
+.total{
+margin-top:15px;
+font-weight:600
+}
+
+.whats{
+display:block;
+margin-top:15px;
+background:#25D366;
+color:white;
+text-align:center;
+padding:10px;
+text-decoration:none;
+border-radius:6px
 }
 
 .cart-btn{
-
 position:fixed;
-
 right:20px;
 bottom:20px;
-
 background:black;
 color:white;
-
 padding:15px;
-
 border-radius:50%;
-
-cursor:pointer;
-
+cursor:pointer
 }
 
 /* MOBILE */
@@ -280,29 +204,23 @@ position:absolute;
 top:60px;
 right:0;
 width:200px;
-padding:20px;
+padding:20px
 }
 
-.menu.show{
-display:flex;
-}
+.menu.show{display:flex}
 
-.hamburger{
-display:block;
-}
+.hamburger{display:block}
 
 }
+
+/* FOOTER */
 
 footer{
-
 background:#111;
 color:#aaa;
-
 text-align:center;
-
 padding:30px;
-margin-top:50px;
-
+margin-top:40px
 }
 
 </style>
@@ -317,46 +235,36 @@ margin-top:50px;
 <div class="hamburger" onclick="toggleMenu()">☰</div>
 
 <div class="menu" id="menu">
-
 <a href="#">Home</a>
 <a href="#">Produtos</a>
 <a href="#">Contato</a>
-
 </div>
 
 </nav>
 
-<!-- BUSCA -->
-
 <div class="search">
-
 <input type="text" id="search" placeholder="Buscar perfume...">
-
 </div>
 
-<!-- FILTROS -->
-
 <div class="filtros">
-
 <button onclick="filtrar('todos')">Todos</button>
 <button onclick="filtrar('amadeirado')">Amadeirado</button>
 <button onclick="filtrar('citrico')">Cítrico</button>
 <button onclick="filtrar('doce')">Doce</button>
 <button onclick="filtrar('oriental')">Oriental</button>
-
 </div>
 
-<!-- PRODUTOS -->
-
 <div class="produtos" id="produtos"></div>
-
-<!-- CARRINHO -->
 
 <div class="cart" id="cart">
 
 <h2>Carrinho</h2>
 
 <div id="cartItems"></div>
+
+<div class="total" id="total"></div>
+
+<a class="whats" id="finalizar" target="_blank">Finalizar no WhatsApp</a>
 
 </div>
 
@@ -368,7 +276,7 @@ Moto Jhon Perfumes © 2026
 
 <script>
 
-/* PRODUTOS */
+const zap="5521965109590"
 
 const produtos=[
 {name:"Perfume 1",categoria:"amadeirado",preco:390,img:"https://images.unsplash.com/photo-1541643600914-78b084683601"},
@@ -407,6 +315,8 @@ html+=`
 
 <div class="preco">R$ ${p.preco}</div>
 
+<input type="number" min="1" value="1" class="qtd" id="q${i}">
+
 <button class="btn" onclick="addCarrinho(${i})">Adicionar</button>
 
 </div>
@@ -423,70 +333,79 @@ document.getElementById("produtos").innerHTML=html
 
 render(produtos)
 
-/* FILTRO */
-
 function filtrar(cat){
 
-if(cat==="todos"){
-render(produtos)
-}else{
+if(cat==="todos") render(produtos)
 
-let filtrados=produtos.filter(p=>p.categoria===cat)
-
-render(filtrados)
+else render(produtos.filter(p=>p.categoria===cat))
 
 }
-
-}
-
-/* BUSCA */
 
 document.getElementById("search").addEventListener("keyup",function(){
 
 let termo=this.value.toLowerCase()
 
-let resultado=produtos.filter(p=>p.name.toLowerCase().includes(termo))
-
-render(resultado)
+render(produtos.filter(p=>p.name.toLowerCase().includes(termo)))
 
 })
 
-/* CARRINHO */
-
 function addCarrinho(i){
 
-carrinho.push(produtos[i])
+let qtd=document.getElementById("q"+i).value
 
-atualizarCarrinho()
+carrinho.push({...produtos[i],qtd:parseInt(qtd)})
+
+updateCart()
 
 }
 
-function atualizarCarrinho(){
+function updateCart(){
 
 let html=""
+let total=0
 
-carrinho.forEach(p=>{
+carrinho.forEach((p,i)=>{
 
-html+=`<div class="cart-item">
-<span>${p.name}</span>
-<span>R$${p.preco}</span>
-</div>`
+total+=p.preco*p.qtd
+
+html+=`
+<div class="cart-item">
+<span>${p.name} x${p.qtd}</span>
+<span>R$${p.preco*p.qtd}</span>
+<span class="remove" onclick="remover(${i})">✖</span>
+</div>
+`
 
 })
 
 document.getElementById("cartItems").innerHTML=html
+document.getElementById("total").innerText="Total: R$ "+total
+
+let msg="Olá, quero comprar:%0A"
+
+carrinho.forEach(p=>{
+msg+=`${p.name} x${p.qtd}%0A`
+})
+
+msg+=`Total: R$${total}`
+
+document.getElementById("finalizar").href=`https://wa.me/${zap}?text=${msg}`
 
 }
 
-/* TOGGLE CART */
+function remover(i){
+
+carrinho.splice(i,1)
+
+updateCart()
+
+}
 
 function toggleCart(){
 
 document.getElementById("cart").classList.toggle("open")
 
 }
-
-/* MOBILE */
 
 function toggleMenu(){
 
