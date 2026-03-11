@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="pt-br">
 
 <head>
@@ -63,7 +62,7 @@ color:gold;
 
 .cart-btn{
 cursor:pointer;
-font-size:20px;
+font-size:22px;
 }
 
 /* BANNER */
@@ -126,9 +125,9 @@ padding:40px;
 }
 
 .search input{
-padding:10px;
-width:300px;
-border-radius:5px;
+padding:12px;
+width:320px;
+border-radius:6px;
 border:none;
 }
 
@@ -192,6 +191,7 @@ border-radius:10px;
 color:gold;
 font-weight:bold;
 margin:10px 0;
+font-size:18px;
 }
 
 .badge{
@@ -234,6 +234,7 @@ padding:30px;
 border-radius:10px;
 max-width:500px;
 text-align:center;
+position:relative;
 }
 
 .modal-content img{
@@ -249,13 +250,24 @@ transform:scale(1.2);
 
 .close{
 position:absolute;
-top:20px;
-right:40px;
-font-size:30px;
+top:10px;
+right:15px;
+font-size:25px;
 cursor:pointer;
 }
 
-/* CARRINHO MELHORADO */
+.modal-content button{
+margin-top:15px;
+padding:10px 20px;
+border:none;
+background:gold;
+color:black;
+font-weight:bold;
+cursor:pointer;
+border-radius:5px;
+}
+
+/* CARRINHO PROFISSIONAL */
 
 .cart{
 position:fixed;
@@ -263,73 +275,68 @@ right:-400px;
 top:0;
 width:360px;
 height:100%;
-background:#0f0f0f;
+background:#0d0d0d;
 padding:25px;
 transition:.4s;
 overflow:auto;
-box-shadow:-6px 0 20px rgba(0,0,0,0.8);
-border-left:1px solid #222;
+border-left:2px solid gold;
+box-shadow:-5px 0 20px rgba(0,0,0,0.7);
 }
 
 .cart.open{
 right:0;
 }
 
-.cart h2{
+.cart-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
 margin-bottom:20px;
+}
+
+.cart-header h2{
+color:gold;
+}
+
+.close-cart{
+cursor:pointer;
 font-size:22px;
-border-bottom:1px solid #333;
-padding-bottom:10px;
 }
 
 .cart-item{
 display:flex;
 justify-content:space-between;
 align-items:center;
+margin-bottom:15px;
 background:#1a1a1a;
-padding:12px;
+padding:10px;
 border-radius:8px;
-margin-bottom:12px;
-font-size:14px;
-}
-
-.cart-item:hover{
-background:#222;
 }
 
 .cart-item button{
-background:#ff4d4d;
+background:red;
 border:none;
 color:white;
-padding:6px 10px;
-border-radius:4px;
+padding:5px 8px;
 cursor:pointer;
-font-size:12px;
+border-radius:4px;
 }
 
-.cart-item button:hover{
-background:#ff0000;
+.cart-total{
+margin-top:20px;
+font-size:18px;
+color:gold;
 }
 
-.cart button{
+.cart button.finalizar{
+margin-top:20px;
 width:100%;
 padding:12px;
-margin-top:10px;
+background:gold;
 border:none;
-border-radius:6px;
-font-size:15px;
-cursor:pointer;
-}
-
-.cart button:first-of-type{
-background:#333;
-color:white;
-}
-
-.cart button:last-of-type{
-background:#25D366;
-color:white;
 font-weight:bold;
+cursor:pointer;
+border-radius:5px;
 }
 
 /* WHATSAPP */
@@ -384,6 +391,8 @@ margin-top:40px;
 
 </header>
 
+<!-- BANNER -->
+
 <section class="banner">
 
 <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1595425970377-7f0b9e7d7b2f')">
@@ -400,7 +409,8 @@ margin-top:40px;
 </div>
 </div>
 
-<button class="banner-btn prev" onclick="mudarSlide(-1)">❮</button> <button class="banner-btn next" onclick="mudarSlide(1)">❯</button>
+<button class="banner-btn prev" onclick="mudarSlide(-1)">❮</button>
+<button class="banner-btn next" onclick="mudarSlide(1)">❯</button>
 
 </section>
 
@@ -411,14 +421,18 @@ margin-top:40px;
 <section class="produtos" id="produtos">
 
 <div class="categorias">
-
-<button onclick="filtrar('todos')">Todos</button> <button onclick="filtrar('amadeirado')">Amadeirado</button> <button onclick="filtrar('oriental')">Oriental</button> <button onclick="filtrar('citrico')">Cítrico</button> <button onclick="filtrar('doce')">Doce</button>
-
+<button onclick="filtrar('todos')">Todos</button>
+<button onclick="filtrar('amadeirado')">Amadeirado</button>
+<button onclick="filtrar('oriental')">Oriental</button>
+<button onclick="filtrar('citrico')">Cítrico</button>
+<button onclick="filtrar('doce')">Doce</button>
 </div>
 
 <div class="grid" id="grid"></div>
 
 </section>
+
+<!-- MODAL -->
 
 <div class="modal" id="modal">
 
@@ -434,50 +448,54 @@ margin-top:40px;
 
 <div class="preco" id="modalPreco"></div>
 
-<button onclick="addCarrinho(modalIndex)">Adicionar ao carrinho</button>
+<button onclick="addCarrinho(modalIndex);fecharModal()">Adicionar ao carrinho</button>
 
 </div>
 
 </div>
+
+<!-- CARRINHO -->
 
 <div class="cart" id="cart">
 
+<div class="cart-header">
 <h2>Carrinho</h2>
+<span class="close-cart" onclick="toggleCart()">✕</span>
+</div>
 
 <div id="cartItens"></div>
 
-<br>
+<div class="cart-total" id="cartTotal"></div>
 
-<button onclick="toggleCart()">Fechar</button>
-
-<button onclick="finalizar()">Finalizar no WhatsApp</button>
+<button class="finalizar" onclick="finalizar()">Finalizar no WhatsApp</button>
 
 </div>
 
-<section id="sobre">
-<footer>
+<footer id="sobre">
 <h2>Sobre</h2>
 <p>Especialistas em perfumes importados</p>
 </footer>
-</section>
 
-<section id="contato">
-<footer>
+<footer id="contato">
 <h2>Contato</h2>
 <p>WhatsApp: Marcele</p>
 <p>Email: motojhon@gmail.com</p>
 </footer>
-</section>
 
 <a class="whatsapp" href="https://wa.me/5521965109590" target="_blank">💬</a>
 
 <script>
 
-/* PERFUMES */
-
 let categorias=["amadeirado","oriental","citrico","doce"]
 
 let perfumes=[]
+
+let descricoes=[
+"Fragrância intensa com notas amadeiradas elegantes.",
+"Aroma oriental sofisticado e marcante.",
+"Perfume cítrico refrescante e moderno.",
+"Fragrância doce envolvente e sedutora."
+]
 
 for(let i=1;i<=12;i++){
 
@@ -485,13 +503,11 @@ perfumes.push({
 nome:"Perfume "+i,
 preco:199,
 categoria:categorias[i%4],
-desc:"Fragrância sofisticada com aroma marcante e elegante.",
+desc:descricoes[i%4],
 img:"https://source.unsplash.com/400x400/?perfume"
 })
 
 }
-
-/* RENDER */
 
 function render(lista=perfumes){
 
@@ -503,8 +519,6 @@ lista.forEach((p,i)=>{
 grid.innerHTML+=`
 
 <div class="card" onclick="abrirModal(${i})">
-
-${i==1||i==4||i==7?'<div class="badge">Mais Vendido</div>':''}
 
 <img src="${p.img}">
 
@@ -526,8 +540,6 @@ ${i==1||i==4||i==7?'<div class="badge">Mais Vendido</div>':''}
 
 render()
 
-/* MODAL */
-
 let modalIndex=0
 
 function abrirModal(i){
@@ -544,12 +556,8 @@ document.getElementById("modalPreco").innerText="R$ "+perfumes[i].preco
 }
 
 function fecharModal(){
-
 document.getElementById("modal").style.display="none"
-
 }
-
-/* BUSCA */
 
 function buscar(txt){
 
@@ -560,8 +568,6 @@ let filtrado=perfumes.filter(p=>p.nome.toLowerCase().includes(txt))
 render(filtrado)
 
 }
-
-/* FILTRO */
 
 function filtrar(cat){
 
@@ -576,8 +582,6 @@ render(filtrado)
 }
 
 }
-
-/* CARRINHO */
 
 let carrinho=[]
 
@@ -604,13 +608,17 @@ function renderCart(){
 let div=document.getElementById("cartItens")
 div.innerHTML=""
 
+let total=0
+
 carrinho.forEach((p,i)=>{
+
+total+=p.preco*p.qtd
 
 div.innerHTML+=`
 
 <div class="cart-item">
 
-${p.nome} (${p.qtd})
+<span>${p.nome} x${p.qtd}</span>
 
 <button onclick="remover(${i})">X</button>
 
@@ -619,6 +627,8 @@ ${p.nome} (${p.qtd})
 `
 
 })
+
+document.getElementById("cartTotal").innerText="Total: R$ "+total
 
 }
 
@@ -636,8 +646,6 @@ document.getElementById("cart").classList.toggle("open")
 
 }
 
-/* WHATSAPP */
-
 function finalizar(){
 
 let msg="Olá, gostaria de comprar:%0A"
@@ -649,8 +657,6 @@ msg+=`${p.nome} x${p.qtd}%0A`
 window.open("https://wa.me/5521965109590?text="+msg)
 
 }
-
-/* BANNER */
 
 let slides=document.querySelectorAll(".slide")
 let index=0
