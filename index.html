@@ -28,7 +28,7 @@ header{
 position:fixed;
 top:0;
 width:100%;
-background:#000;
+background:black;
 z-index:1000;
 }
 
@@ -56,103 +56,41 @@ color:white;
 text-decoration:none;
 }
 
-nav a:hover{
-color:gold;
-}
-
 .cart-btn{
 cursor:pointer;
 font-size:22px;
 }
 
-/* BANNER */
-
-.banner{
-height:70vh;
-margin-top:70px;
-position:relative;
-overflow:hidden;
+#cartCount{
+background:red;
+border-radius:50%;
+padding:3px 7px;
+font-size:12px;
+margin-left:5px;
 }
 
-.slide{
-position:absolute;
-width:100%;
-height:100%;
-background-size:cover;
-background-position:center;
-opacity:0;
-transition:1s;
-display:flex;
-align-items:center;
-justify-content:center;
-}
+/* TIMER */
 
-.slide.active{
-opacity:1;
-}
-
-.slide-content{
-background:rgba(0,0,0,.6);
-padding:30px 60px;
-border-radius:10px;
+.timer{
 text-align:center;
-}
-
-.slide-content h2{
-font-size:40px;
-}
-
-.banner-btn{
-position:absolute;
-top:50%;
-transform:translateY(-50%);
-font-size:25px;
-background:rgba(0,0,0,.5);
-border:none;
-color:white;
 padding:10px;
-cursor:pointer;
+background:#111;
+color:gold;
+margin-top:70px;
 }
-
-.prev{left:20px}
-.next{right:20px}
 
 /* BUSCA */
 
 .search{
 text-align:center;
-padding:40px;
+padding:30px;
 }
 
 .search input{
-padding:12px;
-width:320px;
-border-radius:6px;
+padding:10px;
+width:300px;
 border:none;
-}
-
-/* CATEGORIAS */
-
-.categorias{
-display:flex;
-justify-content:center;
-gap:15px;
-margin-bottom:30px;
-flex-wrap:wrap;
-}
-
-.categorias button{
-padding:8px 15px;
-border:none;
-background:#222;
-color:white;
-cursor:pointer;
 border-radius:5px;
-}
-
-.categorias button:hover{
-background:gold;
-color:black;
 }
 
 /* PRODUTOS */
@@ -167,97 +105,103 @@ grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:25px;
 }
 
+/* CARD */
+
 .card{
-background:#1a1a1a;
-padding:15px;
-border-radius:10px;
-cursor:pointer;
-transition:.3s;
-position:relative;
+
+background:linear-gradient(145deg,#141414,#0b0b0b);
+border-radius:12px;
+padding:20px;
 text-align:center;
+position:relative;
+transition:.4s;
+border:1px solid rgba(255,215,0,0.2);
+
 }
 
 .card:hover{
-transform:translateY(-5px);
-box-shadow:0 0 15px gold;
+
+transform:translateY(-8px);
+box-shadow:0 0 25px rgba(255,215,0,0.4);
+
 }
 
 .card img{
 width:100%;
 border-radius:10px;
+transition:.4s;
 }
 
-.preco{
-color:gold;
-font-weight:bold;
-margin:10px 0;
+.card:hover img{
+transform:scale(1.05);
+}
+
+/* PROMO */
+
+.promo{
+position:absolute;
+top:10px;
+right:10px;
+background:gold;
+color:black;
+font-size:11px;
+padding:5px 8px;
+border-radius:5px;
+animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1)}
+50%{transform:scale(1.1)}
+100%{transform:scale(1)}
+}
+
+/* FAVORITO */
+
+.favorito{
+position:absolute;
+top:10px;
+left:10px;
+cursor:pointer;
 font-size:18px;
 }
 
-.stars{
+/* PREÇO */
+
+.preco{
 color:gold;
-margin-bottom:5px;
-}
-
-/* MODAL */
-
-.modal{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.85);
-align-items:center;
-justify-content:center;
-z-index:2000;
-}
-
-.modal-content{
-background:#111;
-padding:30px;
-border-radius:10px;
-max-width:500px;
-width:90%;
-text-align:center;
-position:relative;
-animation:modalOpen .3s;
-}
-
-@keyframes modalOpen{
-from{transform:scale(.8);opacity:0}
-to{transform:scale(1);opacity:1}
-}
-
-.modal-content img{
-width:100%;
-border-radius:10px;
-transition:.3s;
-cursor:zoom-in;
-}
-
-.modal-content img:hover{
-transform:scale(1.15);
-}
-
-.close{
-position:absolute;
-top:10px;
-right:15px;
-font-size:28px;
-cursor:pointer;
-}
-
-.modal-content button{
-margin-top:15px;
-padding:12px 20px;
-border:none;
-background:gold;
-color:black;
+font-size:20px;
 font-weight:bold;
+margin:10px 0;
+}
+
+.descricao{
+font-size:13px;
+color:#ccc;
+}
+
+.viewing{
+font-size:12px;
+color:#aaa;
+margin-top:5px;
+}
+
+.estoque{
+font-size:12px;
+color:#bbb;
+}
+
+/* BOTÃO */
+
+.add{
+background:gold;
+border:none;
+padding:10px;
+border-radius:6px;
 cursor:pointer;
-border-radius:5px;
+font-weight:bold;
+width:100%;
+margin-top:10px;
 }
 
 /* CARRINHO */
@@ -266,10 +210,10 @@ border-radius:5px;
 position:fixed;
 right:-400px;
 top:0;
-width:360px;
+width:350px;
 height:100%;
-background:#0d0d0d;
-padding:25px;
+background:#111;
+padding:20px;
 transition:.4s;
 overflow:auto;
 border-left:2px solid gold;
@@ -279,52 +223,26 @@ border-left:2px solid gold;
 right:0;
 }
 
-.cart-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:20px;
-}
-
-.close-cart{
-cursor:pointer;
-font-size:22px;
-}
-
 .cart-item{
 display:flex;
 justify-content:space-between;
-align-items:center;
-margin-bottom:12px;
+margin:10px 0;
 background:#1a1a1a;
-padding:10px;
-border-radius:8px;
+padding:8px;
+border-radius:5px;
 }
 
 .cart-item button{
 background:red;
 border:none;
 color:white;
-padding:5px 8px;
+padding:4px 6px;
 cursor:pointer;
-border-radius:4px;
 }
 
 .cart-total{
-margin-top:20px;
-font-size:18px;
+margin-top:15px;
 color:gold;
-}
-
-.cart button.finalizar{
-margin-top:20px;
-width:100%;
-padding:12px;
-background:gold;
-border:none;
-font-weight:bold;
-cursor:pointer;
-border-radius:5px;
 }
 
 /* WHATSAPP */
@@ -345,13 +263,6 @@ text-decoration:none;
 color:white;
 }
 
-footer{
-background:#000;
-text-align:center;
-padding:40px;
-margin-top:40px;
-}
-
 </style>
 
 </head>
@@ -367,36 +278,21 @@ margin-top:40px;
 <ul>
 <li><a href="#">Home</a></li>
 <li><a href="#produtos">Produtos</a></li>
-<li><a href="#sobre">Sobre</a></li>
-<li><a href="#contato">Contato</a></li>
+<li><a href="#">Sobre</a></li>
+<li><a href="#">Contato</a></li>
 </ul>
 
-<div class="cart-btn" onclick="toggleCart()">🛒</div>
+<div class="cart-btn" onclick="toggleCart()">
+🛒 <span id="cartCount">0</span>
+</div>
 
 </nav>
 
 </header>
 
-<section class="banner">
-
-<div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1595425970377-7f0b9e7d7b2f')">
-<div class="slide-content">
-<h2>Perfumes Importados</h2>
-<p>Elegância e sofisticação</p>
+<div class="timer">
+Promoção termina em <span id="tempo">10:00</span>
 </div>
-</div>
-
-<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1585386959984-a41552231658')">
-<div class="slide-content">
-<h2>Fragrâncias Exclusivas</h2>
-<p>Luxo em cada detalhe</p>
-</div>
-</div>
-
-<button class="banner-btn prev" onclick="mudarSlide(-1)">❮</button>
-<button class="banner-btn next" onclick="mudarSlide(1)">❯</button>
-
-</section>
 
 <section class="search">
 <input type="text" placeholder="Buscar perfume..." onkeyup="buscar(this.value)">
@@ -404,105 +300,97 @@ margin-top:40px;
 
 <section class="produtos" id="produtos">
 
-<div class="categorias">
-<button onclick="filtrar('todos')">Todos</button>
-<button onclick="filtrar('amadeirado')">Amadeirado</button>
-<button onclick="filtrar('oriental')">Oriental</button>
-<button onclick="filtrar('citrico')">Cítrico</button>
-<button onclick="filtrar('doce')">Doce</button>
-</div>
-
 <div class="grid" id="grid"></div>
 
 </section>
-
-<!-- MODAL -->
-
-<div class="modal" id="modal">
-
-<div class="modal-content">
-
-<span class="close" onclick="fecharModal()">×</span>
-
-<img id="modalImg">
-
-<h2 id="modalNome"></h2>
-
-<p id="modalDesc"></p>
-
-<div class="preco" id="modalPreco"></div>
-
-<button onclick="addCarrinho(modalIndex);fecharModal()">Adicionar ao carrinho</button>
-
-</div>
-
-</div>
 
 <!-- CARRINHO -->
 
 <div class="cart" id="cart">
 
-<div class="cart-header">
 <h2>Carrinho</h2>
-<span class="close-cart" onclick="toggleCart()">✕</span>
-</div>
 
 <div id="cartItens"></div>
 
 <div class="cart-total" id="cartTotal"></div>
 
-<button class="finalizar" onclick="finalizar()">Finalizar no WhatsApp</button>
+<button onclick="finalizar()">Finalizar no WhatsApp</button>
 
 </div>
-
-<footer id="sobre">
-<h2>Sobre</h2>
-<p>Especialistas em perfumes importados</p>
-</footer>
-
-<footer id="contato">
-<h2>Contato</h2>
-<p>WhatsApp: Marcele</p>
-<p>Email: motojhon@gmail.com</p>
-</footer>
 
 <a class="whatsapp" href="https://wa.me/5521965109590" target="_blank">💬</a>
 
 <script>
 
-let categorias=["amadeirado","oriental","citrico","doce"]
+/* TIMER PROMOÇÃO */
 
-let perfumes=[]
+let tempo = 600
+
+setInterval(()=>{
+
+let min=Math.floor(tempo/60)
+let seg=tempo%60
+
+document.getElementById("tempo").innerText=
+min+":"+seg.toString().padStart(2,"0")
+
+tempo--
+
+},1000)
+
+/* PERFUMES */
 
 let descricoes=[
-"Fragrância intensa com notas amadeiradas elegantes.",
-"Aroma oriental sofisticado e marcante.",
-"Perfume cítrico refrescante e moderno.",
-"Fragrância doce envolvente e sedutora."
+
+"Fragrância sofisticada com notas amadeiradas.",
+"Perfume oriental intenso e marcante.",
+"Aroma cítrico refrescante e moderno.",
+"Perfume doce com toque sensual.",
+"Notas amadeiradas luxuosas.",
+"Fragrância elegante para qualquer ocasião.",
+"Perfume inspirado em fragrâncias importadas.",
+"Aroma forte com excelente fixação.",
+"Perfume moderno com notas frescas.",
+"Fragrância sofisticada e elegante.",
+"Perfume sedutor com toque doce.",
+"Aroma exclusivo de alta qualidade."
+
 ]
+
+let perfumes=[]
 
 for(let i=1;i<=12;i++){
 
 perfumes.push({
+
 nome:"Perfume "+i,
 preco:199,
-categoria:categorias[i%4],
-desc:descricoes[i%4],
-img:"https://source.unsplash.com/400x400/?perfume"
+desc:descricoes[i-1],
+img:"https://source.unsplash.com/400x400/?perfume",
+estoque:Math.floor(Math.random()*10)+3,
+viewing:Math.floor(Math.random()*40)+10
+
 })
 
 }
 
+/* RENDER */
+
 function render(lista=perfumes){
 
 let grid=document.getElementById("grid")
+
 grid.innerHTML=""
 
 lista.forEach((p,i)=>{
 
 grid.innerHTML+=`
 
-<div class="card" onclick="abrirModal(${i})">
+<div class="card">
+
+<div class="promo">PROMO</div>
+
+<div class="favorito" onclick="favoritar(this)">❤</div>
 
 <img src="${p.img}">
 
@@ -510,7 +398,17 @@ grid.innerHTML+=`
 
 <div class="stars">★★★★★</div>
 
+<p class="descricao">${p.desc}</p>
+
 <div class="preco">R$ ${p.preco}</div>
+
+<div class="estoque">Restam ${p.estoque} unidades</div>
+
+<div class="viewing">👁 ${p.viewing} pessoas vendo</div>
+
+<button class="add" onclick="addCarrinho(${i})">
+Adicionar ao carrinho
+</button>
 
 </div>
 
@@ -522,46 +420,125 @@ grid.innerHTML+=`
 
 render()
 
-let modalIndex=0
+/* FAVORITAR */
 
-function abrirModal(i){
+function favoritar(el){
 
-modalIndex=i
+el.classList.toggle("ativo")
 
-document.getElementById("modal").style.display="flex"
+if(el.style.color=="red"){
 
-document.getElementById("modalImg").src=perfumes[i].img
-document.getElementById("modalNome").innerText=perfumes[i].nome
-document.getElementById("modalDesc").innerText=perfumes[i].desc
-document.getElementById("modalPreco").innerText="R$ "+perfumes[i].preco
+el.style.color="white"
 
-}
+}else{
 
-function fecharModal(){
-document.getElementById("modal").style.display="none"
-}
+el.style.color="red"
 
-/* FECHAR CLICANDO FORA */
-
-window.onclick=function(e){
-
-let modal=document.getElementById("modal")
-
-if(e.target==modal){
-fecharModal()
 }
 
 }
 
-/* FECHAR COM ESC */
+/* CARRINHO */
 
-document.addEventListener("keydown",function(e){
+let carrinho=[]
 
-if(e.key==="Escape"){
-fecharModal()
+function addCarrinho(i){
+
+let item=carrinho.find(p=>p.nome==perfumes[i].nome)
+
+if(item){
+
+item.qtd++
+
+}else{
+
+carrinho.push({...perfumes[i],qtd:1})
+
 }
+
+renderCart()
+
+}
+
+/* RENDER CARRINHO */
+
+function renderCart(){
+
+let div=document.getElementById("cartItens")
+
+div.innerHTML=""
+
+let total=0
+
+carrinho.forEach((p,i)=>{
+
+total+=p.preco*p.qtd
+
+div.innerHTML+=`
+
+<div class="cart-item">
+
+<span>${p.nome} x${p.qtd}</span>
+
+<button onclick="remover(${i})">X</button>
+
+</div>
+
+`
 
 })
+
+document.getElementById("cartTotal").innerText="Total: R$ "+total
+
+let totalItens=carrinho.reduce((acc,p)=>acc+p.qtd,0)
+
+document.getElementById("cartCount").innerText=totalItens
+
+}
+
+/* REMOVER */
+
+function remover(i){
+
+carrinho.splice(i,1)
+
+renderCart()
+
+}
+
+/* ABRIR CARRINHO */
+
+function toggleCart(){
+
+document.getElementById("cart").classList.toggle("open")
+
+}
+
+/* BUSCA */
+
+function buscar(txt){
+
+txt=txt.toLowerCase()
+
+let filtrado=perfumes.filter(p=>p.nome.toLowerCase().includes(txt))
+
+render(filtrado)
+
+}
+
+/* WHATSAPP */
+
+function finalizar(){
+
+let msg="Olá, gostaria de comprar:%0A"
+
+carrinho.forEach(p=>{
+msg+=`${p.nome} x${p.qtd}%0A`
+})
+
+window.open("https://wa.me/5521965109590?text="+msg)
+
+}
 
 </script>
 
