@@ -1,4 +1,5 @@
-
+```html
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -6,7 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Perfumes Importados</title>
+<title>Moto Jhon | Perfumes Importados</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -16,59 +17,79 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Poppins;
+font-family:"Poppins",sans-serif;
 }
 
 body{
-background:#f5f5f5;
+background:#f3f3f3;
 color:#222;
 }
 
 /* NAVBAR */
 
 nav{
-background:#000;
-color:white;
-padding:18px 5%;
+background:#0b0b0b;
+padding:18px 6%;
 display:flex;
 justify-content:space-between;
 align-items:center;
+box-shadow:0 5px 20px rgba(0,0,0,0.25);
 }
 
 .logo{
+color:#fff;
 font-size:22px;
 font-weight:600;
+letter-spacing:1px;
 }
 
 .zap{
 background:#25D366;
-padding:10px 20px;
-border-radius:25px;
-text-decoration:none;
 color:white;
+padding:10px 22px;
+border-radius:30px;
+text-decoration:none;
 font-size:14px;
+font-weight:500;
+transition:.3s;
+}
+
+.zap:hover{
+transform:scale(1.05);
 }
 
 /* HERO */
 
 .hero{
-background:url("https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=1500&q=80");
+
+height:360px;
+
+background:
+linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),
+url("https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=1500&q=80");
+
 background-size:cover;
 background-position:center;
-height:320px;
+
 display:flex;
 align-items:center;
 justify-content:center;
+text-align:center;
 color:white;
-font-size:36px;
+
+font-size:40px;
 font-weight:600;
+letter-spacing:1px;
+
 }
 
 /* LAYOUT */
 
 .container{
+max-width:1300px;
+margin:auto;
 display:grid;
-grid-template-columns:1fr 320px;
+grid-template-columns:1fr 330px;
 gap:40px;
 padding:40px 5%;
 }
@@ -81,7 +102,7 @@ grid-template-columns:1fr;
 
 }
 
-/* PRODUTOS */
+/* GRID PRODUTOS */
 
 .grid{
 display:grid;
@@ -89,24 +110,28 @@ grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
 gap:30px;
 }
 
+/* CARD */
+
 .card{
 background:white;
-border-radius:12px;
+border-radius:14px;
 overflow:hidden;
-box-shadow:0 10px 20px rgba(0,0,0,0.08);
-transition:.3s;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+transition:.35s;
+position:relative;
 }
 
 .card:hover{
-transform:translateY(-6px);
+transform:translateY(-8px);
+box-shadow:0 15px 40px rgba(0,0,0,0.18);
 }
 
 .card img{
 width:100%;
 height:240px;
 object-fit:contain;
-background:#f8f8f8;
-padding:20px;
+background:#fafafa;
+padding:25px;
 }
 
 .card-body{
@@ -117,44 +142,52 @@ text-align:center;
 .card h3{
 font-size:18px;
 margin-bottom:8px;
+font-weight:600;
 }
 
 .card p{
 font-size:13px;
-color:#777;
-margin-bottom:12px;
+color:#666;
+margin-bottom:15px;
 }
 
 .price{
-font-size:20px;
+font-size:22px;
 font-weight:600;
-color:#b88b2d;
+color:#caa44b;
 margin-bottom:15px;
 }
 
 .btn{
-background:black;
+background:#111;
 color:white;
 border:none;
-width:100%;
 padding:12px;
+width:100%;
 border-radius:8px;
 cursor:pointer;
+font-weight:500;
+transition:.3s;
+}
+
+.btn:hover{
+background:#caa44b;
 }
 
 /* CARRINHO */
 
 .cart{
 background:white;
-padding:20px;
-border-radius:12px;
-box-shadow:0 10px 20px rgba(0,0,0,0.08);
+padding:22px;
+border-radius:14px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
 position:sticky;
 top:20px;
 }
 
 .cart h2{
 margin-bottom:15px;
+font-size:20px;
 }
 
 .cart-item{
@@ -162,30 +195,42 @@ border-bottom:1px solid #eee;
 padding:10px 0;
 }
 
+.cart-item strong{
+display:block;
+font-size:14px;
+}
+
 .qty{
 display:flex;
 gap:6px;
-margin-top:5px;
+align-items:center;
+margin-top:6px;
 }
 
 .qty button{
-width:24px;
-height:24px;
+width:26px;
+height:26px;
 border:none;
-background:#b88b2d;
+background:#caa44b;
 color:white;
+border-radius:5px;
 cursor:pointer;
-border-radius:4px;
+}
+
+.qty span{
+font-size:14px;
 }
 
 .remove{
-color:red;
+color:#d33;
 font-size:12px;
 cursor:pointer;
+margin-top:4px;
 }
 
 .total{
 margin-top:15px;
+font-size:16px;
 font-weight:600;
 display:flex;
 justify-content:space-between;
@@ -201,6 +246,22 @@ border-radius:8px;
 color:white;
 font-weight:600;
 cursor:pointer;
+transition:.3s;
+}
+
+.btn-zap:hover{
+transform:scale(1.03);
+}
+
+/* FOOTER */
+
+footer{
+margin-top:40px;
+background:#111;
+color:#aaa;
+text-align:center;
+padding:25px;
+font-size:14px;
 }
 
 </style>
@@ -220,9 +281,7 @@ WhatsApp
 </nav>
 
 <div class="hero">
-
 Perfumes Importados
-
 </div>
 
 <div class="container">
@@ -231,7 +290,7 @@ Perfumes Importados
 
 <div class="cart">
 
-<h2>Seu pedido</h2>
+<h2>Seu Pedido</h2>
 
 <div id="cart-items">
 Carrinho vazio
@@ -249,6 +308,10 @@ Finalizar no WhatsApp
 </div>
 
 </div>
+
+<footer>
+Perfumes Importados • Atendimento via WhatsApp
+</footer>
 
 <script>
 
@@ -303,7 +366,7 @@ grid.innerHTML+=`
 <div class="price">R$ ${p.preco}</div>
 
 <button class="btn" onclick="add('${p.nome}',${p.preco})">
-Adicionar
+Adicionar ao carrinho
 </button>
 
 </div>
@@ -337,9 +400,7 @@ const item=cart.find(i=>i.nome===nome)
 item.qtd+=valor
 
 if(item.qtd<=0){
-
 cart=cart.filter(i=>i.nome!==nome)
-
 }
 
 render()
