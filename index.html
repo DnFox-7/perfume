@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="pt-br">
 
 <head>
@@ -254,36 +255,81 @@ font-size:30px;
 cursor:pointer;
 }
 
-/* CARRINHO */
+/* CARRINHO MELHORADO */
 
 .cart{
 position:fixed;
 right:-400px;
 top:0;
-width:350px;
+width:360px;
 height:100%;
-background:#111;
-padding:20px;
+background:#0f0f0f;
+padding:25px;
 transition:.4s;
 overflow:auto;
+box-shadow:-6px 0 20px rgba(0,0,0,0.8);
+border-left:1px solid #222;
 }
 
 .cart.open{
 right:0;
 }
 
+.cart h2{
+margin-bottom:20px;
+font-size:22px;
+border-bottom:1px solid #333;
+padding-bottom:10px;
+}
+
 .cart-item{
 display:flex;
 justify-content:space-between;
-margin:10px 0;
+align-items:center;
+background:#1a1a1a;
+padding:12px;
+border-radius:8px;
+margin-bottom:12px;
+font-size:14px;
+}
+
+.cart-item:hover{
+background:#222;
 }
 
 .cart-item button{
-background:red;
+background:#ff4d4d;
 border:none;
 color:white;
-padding:5px;
+padding:6px 10px;
+border-radius:4px;
 cursor:pointer;
+font-size:12px;
+}
+
+.cart-item button:hover{
+background:#ff0000;
+}
+
+.cart button{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:none;
+border-radius:6px;
+font-size:15px;
+cursor:pointer;
+}
+
+.cart button:first-of-type{
+background:#333;
+color:white;
+}
+
+.cart button:last-of-type{
+background:#25D366;
+color:white;
+font-weight:bold;
 }
 
 /* WHATSAPP */
@@ -338,8 +384,6 @@ margin-top:40px;
 
 </header>
 
-<!-- BANNER -->
-
 <section class="banner">
 
 <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1595425970377-7f0b9e7d7b2f')">
@@ -356,36 +400,25 @@ margin-top:40px;
 </div>
 </div>
 
-<button class="banner-btn prev" onclick="mudarSlide(-1)">❮</button>
-<button class="banner-btn next" onclick="mudarSlide(1)">❯</button>
+<button class="banner-btn prev" onclick="mudarSlide(-1)">❮</button> <button class="banner-btn next" onclick="mudarSlide(1)">❯</button>
 
 </section>
-
-<!-- BUSCA -->
 
 <section class="search">
 <input type="text" placeholder="Buscar perfume..." onkeyup="buscar(this.value)">
 </section>
 
-<!-- PRODUTOS -->
-
 <section class="produtos" id="produtos">
 
 <div class="categorias">
 
-<button onclick="filtrar('todos')">Todos</button>
-<button onclick="filtrar('amadeirado')">Amadeirado</button>
-<button onclick="filtrar('oriental')">Oriental</button>
-<button onclick="filtrar('citrico')">Cítrico</button>
-<button onclick="filtrar('doce')">Doce</button>
+<button onclick="filtrar('todos')">Todos</button> <button onclick="filtrar('amadeirado')">Amadeirado</button> <button onclick="filtrar('oriental')">Oriental</button> <button onclick="filtrar('citrico')">Cítrico</button> <button onclick="filtrar('doce')">Doce</button>
 
 </div>
 
 <div class="grid" id="grid"></div>
 
 </section>
-
-<!-- MODAL -->
 
 <div class="modal" id="modal">
 
@@ -407,8 +440,6 @@ margin-top:40px;
 
 </div>
 
-<!-- CARRINHO -->
-
 <div class="cart" id="cart">
 
 <h2>Carrinho</h2>
@@ -418,8 +449,6 @@ margin-top:40px;
 <br>
 
 <button onclick="toggleCart()">Fechar</button>
-
-<br><br>
 
 <button onclick="finalizar()">Finalizar no WhatsApp</button>
 
