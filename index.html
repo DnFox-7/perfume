@@ -8,9 +8,9 @@
 
     <style>
         * { margin:0; padding:0; box-sizing:border-box; font-family: 'Poppins', sans-serif; }
-        body { background:#f5f5f5; color: #333; }
+        body { background:#f5f5f5; color: #333; overflow-x: hidden; }
 
-        /* NAVBAR REFEITA */
+        /* NAVBAR */
         nav {
             background: black;
             color: white;
@@ -33,20 +33,27 @@
 
         .nav-links a:hover { color: #d4af37; }
 
-        /* HERO - BANNER */
+        .cart-icon {
+            cursor: pointer;
+            position: relative;
+            background: #d4af37;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        /* HERO */
         .hero {
             height: 350px;
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://images.unsplash.com/photo-1594035910387-fea47794261f");
             background-size: cover;
             background-position: center;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: clamp(24px, 5vw, 40px);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            text-align: center;
         }
 
         /* FILTROS */
@@ -55,7 +62,7 @@
             justify-content: center;
             gap: 10px;
             margin: 40px 0;
-            flex-wrap: wrap; /* Importante para celular */
+            flex-wrap: wrap;
         }
 
         .filtros button {
@@ -64,17 +71,12 @@
             background: white;
             cursor: pointer;
             border-radius: 30px;
-            font-weight: 500;
             transition: 0.3s;
         }
 
-        .filtros button:hover, .filtros button.active {
-            background: #d4af37;
-            color: white;
-            border-color: #d4af37;
-        }
+        .filtros button.active { background: #d4af37; color: white; border-color: #d4af37; }
 
-        /* GRID DE PRODUTOS */
+        /* PRODUTOS */
         .produtos {
             max-width: 1200px;
             margin: auto;
@@ -84,31 +86,21 @@
             padding: 20px;
         }
 
-        /* CARD */
         .card {
             background: white;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: 0.3s;
             border: 1px solid #eee;
         }
 
-        .card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-
+        .card:hover { transform: translateY(-5px); }
         .card img { width: 100%; height: 250px; object-fit: cover; }
-
         .info { padding: 20px; text-align: center; }
-        .info h3 { font-size: 18px; margin-bottom: 5px; }
+        .preco { color: #d4af37; font-size: 20px; font-weight: 600; margin-bottom: 15px; }
 
-        .preco {
-            color: #d4af37;
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .btn {
+        .btn-add {
             background: black;
             color: white;
             border: none;
@@ -117,49 +109,71 @@
             cursor: pointer;
             border-radius: 8px;
             font-weight: 600;
-            transition: 0.3s;
         }
 
-        .btn:hover { background: #d4af37; }
-
-        footer {
-            background: #111;
-            color: #aaa;
-            text-align: center;
-            padding: 40px;
-            margin-top: 50px;
+        /* SIDEBAR CARRINHO */
+        .cart-sidebar {
+            position: fixed;
+            right: -400px;
+            top: 0;
+            width: 350px;
+            height: 100%;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            z-index: 2000;
+            transition: 0.4s;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* AJUSTE PARA CELULAR */
+        .cart-sidebar.active { right: 0; }
+
+        .cart-header { display: flex; justify-content: space-between; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .close-cart { cursor: pointer; font-weight: bold; font-size: 20px; }
+
+        .cart-items { flex-grow: 1; overflow-y: auto; }
+        .item-no-carrinho { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; background: #f9f9f9; padding: 10px; border-radius: 5px; }
+        .item-no-carrinho button { background: #ff4d4d; color: white; border: none; padding: 2px 8px; cursor: pointer; border-radius: 3px; }
+
+        .total { font-size: 20px; font-weight: bold; margin-top: 20px; text-align: right; }
+        .btn-finalizar { background: #25D366; color: white; border: none; padding: 15px; margin-top: 20px; cursor: pointer; border-radius: 8px; font-weight: bold; }
+
+        /* SEÇÕES EXTRAS */
+        section { padding: 80px 8%; text-align: center; }
+        #sobre { background: #fff; }
+        #contato { background: #111; color: white; }
+
         @media (max-width: 600px) {
-            nav { flex-direction: column; gap: 10px; }
-            .nav-links a { margin: 0 10px; }
-            .hero { height: 200px; }
+            .cart-sidebar { width: 100%; right: -100%; }
         }
     </style>
 </head>
-
 <body>
 
 <nav>
-    <h2>Moto Jhon</h2>
+    <h2 onclick="location.href='#'" style="cursor:pointer">Moto Jhon</h2>
     <div class="nav-links">
         <a href="#home">Home</a>
-        <a href="#produtos">Produtos</a>
+        <a href="#produtos-title">Produtos</a>
         <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
     </div>
+    <div class="cart-icon" onclick="toggleCart()">🛒 Carrinho (<span id="cart-count">0</span>)</div>
 </nav>
 
 <div class="hero" id="home">
-    Perfumes Premium
+    <h1 style="font-size: 3rem;">Moto Jhon</h1>
+    <p>Fragrâncias de Luxo Selecionadas</p>
 </div>
 
-<div class="filtros" id="produtos">
-    <button onclick="filtrar('todos')" class="active">Todos</button>
-    <button onclick="filtrar('amadeirado')">Amadeirado</button>
-    <button onclick="filtrar('citrico')">Cítrico</button>
-    <button onclick="filtrar('doce')">Doce</button>
-    <button onclick="filtrar('oriental')">Oriental</button>
+<h2 id="produtos-title" style="text-align: center; margin-top: 50px;">Nosso Catálogo</h2>
+
+<div class="filtros">
+    <button onclick="filtrar('todos', this)" class="active">Todos</button>
+    <button onclick="filtrar('amadeirado', this)">Amadeirado</button>
+    <button onclick="filtrar('citrico', this)">Cítrico</button>
+    <button onclick="filtrar('doce', this)">Doce</button>
 </div>
 
 <div class="produtos">
@@ -168,7 +182,7 @@
         <div class="info">
             <h3>Sauvage Dior</h3>
             <div class="preco">R$390</div>
-            <button class="btn" onclick="comprar('Sauvage Dior', '390')">Comprar Agora</button>
+            <button class="btn-add" onclick="addAoCarrinho('Sauvage Dior', 390)">Adicionar ao Carrinho</button>
         </div>
     </div>
 
@@ -177,40 +191,121 @@
         <div class="info">
             <h3>Light Blue</h3>
             <div class="preco">R$350</div>
-            <button class="btn" onclick="comprar('Light Blue', '350')">Comprar Agora</button>
+            <button class="btn-add" onclick="addAoCarrinho('Light Blue', 350)">Adicionar ao Carrinho</button>
         </div>
     </div>
 
+    <div class="card doce">
+        <img src="https://images.unsplash.com/photo-1592914610354-fd354ea45e48">
+        <div class="info">
+            <h3>Scandal</h3>
+            <div class="preco">R$440</div>
+            <button class="btn-add" onclick="addAoCarrinho('Scandal', 440)">Adicionar ao Carrinho</button>
+        </div>
     </div>
+</div>
 
-<footer>
-    Moto Jhon Perfumes Premium © 2026
-</footer>
+<section id="sobre">
+    <h2>Sobre a Moto Jhon</h2>
+    <p style="margin-top: 20px; max-width: 800px; margin-inline: auto;">
+        Somos especialistas em trazer as melhores fragrâncias do mundo para você. 
+        Qualidade garantida e atendimento personalizado para quem busca exclusividade.
+    </p>
+</section>
+
+<section id="contato">
+    <h2>Contato</h2>
+    <p>Fale conosco diretamente pelo WhatsApp</p>
+    <p style="margin-top: 10px;">Atendimento: Segunda a Sábado - 09h às 20h</p>
+</section>
+
+<div class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+        <h3>Seu Pedido</h3>
+        <span class="close-cart" onclick="toggleCart()">X</span>
+    </div>
+    <div class="cart-items" id="cart-items-list">
+        </div>
+    <div class="total">
+        Total: R$<span id="total-price">0</span>
+    </div>
+    <button class="btn-finalizar" onclick="enviarWhatsApp()">Finalizar no WhatsApp</button>
+</div>
 
 <script>
-    // FUNÇÃO DE FILTRO
-    function filtrar(tipo){
-        let produtos = document.querySelectorAll(".card");
-        
-        // Ajuste de visual do botão
-        document.querySelectorAll('.filtros button').forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
+    let carrinho = [];
 
-        produtos.forEach(produto => {
-            if(tipo == "todos"){
-                produto.style.display = "block";
-            } else if(produto.classList.contains(tipo)){
-                produto.style.display = "block";
+    function toggleCart() {
+        document.getElementById('cart-sidebar').classList.toggle('active');
+    }
+
+    function addAoCarrinho(nome, preco) {
+        carrinho.push({ nome, preco });
+        atualizarCarrinho();
+        // Feedback visual
+        alert(nome + " adicionado!");
+    }
+
+    function removerDoCarrinho(index) {
+        carrinho.splice(index, 1);
+        atualizarCarrinho();
+    }
+
+    function atualizarCarrinho() {
+        const lista = document.getElementById('cart-items-list');
+        const count = document.getElementById('cart-count');
+        const totalHtml = document.getElementById('total-price');
+        
+        lista.innerHTML = "";
+        let total = 0;
+
+        carrinho.forEach((item, index) => {
+            total += item.preco;
+            lista.innerHTML += `
+                <div class="item-no-carrinho">
+                    <div>
+                        <strong>${item.nome}</strong><br>R$${item.preco}
+                    </div>
+                    <button onclick="removerDoCarrinho(${index})">remover</button>
+                </div>
+            `;
+        });
+
+        count.innerText = carrinho.length;
+        totalHtml.innerText = total;
+    }
+
+    function filtrar(tipo, btn) {
+        let cards = document.querySelectorAll(".card");
+        document.querySelectorAll('.filtros button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        cards.forEach(card => {
+            if(tipo == "todos" || card.classList.contains(tipo)) {
+                card.style.display = "block";
             } else {
-                produto.style.display = "none";
+                card.style.display = "none";
             }
         });
     }
 
-    // FUNÇÃO PARA O WHATSAPP
-    function comprar(nome, preco) {
+    function enviarWhatsApp() {
+        if (carrinho.length === 0) {
+            alert("O carrinho está vazio!");
+            return;
+        }
+
         const numero = "5521999999999"; // COLOQUE SEU NÚMERO AQUI
-        const mensagem = `Olá! Gostaria de comprar o perfume: ${nome} no valor de R$${preco}.`;
+        let mensagem = "Olá Moto Jhon! Gostaria de fazer o seguinte pedido:\n\n";
+        let total = 0;
+
+        carrinho.forEach(item => {
+            mensagem += `• ${item.nome} - R$${item.preco}\n`;
+            total += item.preco;
+        });
+
+        mensagem += `\n*Total: R$${total}*`;
+        
         const link = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
         window.open(link, '_blank');
     }
