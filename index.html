@@ -194,21 +194,6 @@ margin:10px 0;
 font-size:18px;
 }
 
-.badge{
-position:absolute;
-top:10px;
-left:10px;
-background:red;
-padding:5px 10px;
-font-size:12px;
-border-radius:5px;
-}
-
-.estoque{
-font-size:12px;
-color:#aaa;
-}
-
 .stars{
 color:gold;
 margin-bottom:5px;
@@ -223,9 +208,10 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,.8);
+background:rgba(0,0,0,.85);
 align-items:center;
 justify-content:center;
+z-index:2000;
 }
 
 .modal-content{
@@ -233,8 +219,15 @@ background:#111;
 padding:30px;
 border-radius:10px;
 max-width:500px;
+width:90%;
 text-align:center;
 position:relative;
+animation:modalOpen .3s;
+}
+
+@keyframes modalOpen{
+from{transform:scale(.8);opacity:0}
+to{transform:scale(1);opacity:1}
 }
 
 .modal-content img{
@@ -245,20 +238,20 @@ cursor:zoom-in;
 }
 
 .modal-content img:hover{
-transform:scale(1.2);
+transform:scale(1.15);
 }
 
 .close{
 position:absolute;
 top:10px;
 right:15px;
-font-size:25px;
+font-size:28px;
 cursor:pointer;
 }
 
 .modal-content button{
 margin-top:15px;
-padding:10px 20px;
+padding:12px 20px;
 border:none;
 background:gold;
 color:black;
@@ -267,7 +260,7 @@ cursor:pointer;
 border-radius:5px;
 }
 
-/* CARRINHO PROFISSIONAL */
+/* CARRINHO */
 
 .cart{
 position:fixed;
@@ -280,7 +273,6 @@ padding:25px;
 transition:.4s;
 overflow:auto;
 border-left:2px solid gold;
-box-shadow:-5px 0 20px rgba(0,0,0,0.7);
 }
 
 .cart.open{
@@ -294,10 +286,6 @@ align-items:center;
 margin-bottom:20px;
 }
 
-.cart-header h2{
-color:gold;
-}
-
 .close-cart{
 cursor:pointer;
 font-size:22px;
@@ -307,7 +295,7 @@ font-size:22px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-margin-bottom:15px;
+margin-bottom:12px;
 background:#1a1a1a;
 padding:10px;
 border-radius:8px;
@@ -357,8 +345,6 @@ text-decoration:none;
 color:white;
 }
 
-/* FOOTER */
-
 footer{
 background:#000;
 text-align:center;
@@ -390,8 +376,6 @@ margin-top:40px;
 </nav>
 
 </header>
-
-<!-- BANNER -->
 
 <section class="banner">
 
@@ -528,8 +512,6 @@ grid.innerHTML+=`
 
 <div class="preco">R$ ${p.preco}</div>
 
-<div class="estoque">Restam poucas unidades</div>
-
 </div>
 
 `
@@ -559,125 +541,27 @@ function fecharModal(){
 document.getElementById("modal").style.display="none"
 }
 
-function buscar(txt){
+/* FECHAR CLICANDO FORA */
 
-txt=txt.toLowerCase()
+window.onclick=function(e){
 
-let filtrado=perfumes.filter(p=>p.nome.toLowerCase().includes(txt))
+let modal=document.getElementById("modal")
 
-render(filtrado)
-
-}
-
-function filtrar(cat){
-
-if(cat=="todos") render()
-
-else{
-
-let filtrado=perfumes.filter(p=>p.categoria==cat)
-
-render(filtrado)
-
+if(e.target==modal){
+fecharModal()
 }
 
 }
 
-let carrinho=[]
+/* FECHAR COM ESC */
 
-function addCarrinho(i){
+document.addEventListener("keydown",function(e){
 
-let item=carrinho.find(p=>p.nome==perfumes[i].nome)
-
-if(item){
-
-item.qtd++
-
-}else{
-
-carrinho.push({...perfumes[i],qtd:1})
-
+if(e.key==="Escape"){
+fecharModal()
 }
-
-renderCart()
-
-}
-
-function renderCart(){
-
-let div=document.getElementById("cartItens")
-div.innerHTML=""
-
-let total=0
-
-carrinho.forEach((p,i)=>{
-
-total+=p.preco*p.qtd
-
-div.innerHTML+=`
-
-<div class="cart-item">
-
-<span>${p.nome} x${p.qtd}</span>
-
-<button onclick="remover(${i})">X</button>
-
-</div>
-
-`
 
 })
-
-document.getElementById("cartTotal").innerText="Total: R$ "+total
-
-}
-
-function remover(i){
-
-carrinho.splice(i,1)
-
-renderCart()
-
-}
-
-function toggleCart(){
-
-document.getElementById("cart").classList.toggle("open")
-
-}
-
-function finalizar(){
-
-let msg="Olá, gostaria de comprar:%0A"
-
-carrinho.forEach(p=>{
-msg+=`${p.nome} x${p.qtd}%0A`
-})
-
-window.open("https://wa.me/5521965109590?text="+msg)
-
-}
-
-let slides=document.querySelectorAll(".slide")
-let index=0
-
-function mudarSlide(n){
-
-index+=n
-
-if(index>=slides.length)index=0
-if(index<0)index=slides.length-1
-
-slides.forEach(s=>s.classList.remove("active"))
-slides[index].classList.add("active")
-
-}
-
-setInterval(()=>{
-
-mudarSlide(1)
-
-},5000)
 
 </script>
 
