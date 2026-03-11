@@ -1,1 +1,438 @@
-oii
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Perfumes Importados</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins;
+}
+
+body{
+background:#f5f5f5;
+color:#222;
+}
+
+/* NAVBAR */
+
+nav{
+background:#000;
+color:white;
+padding:18px 5%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:22px;
+font-weight:600;
+}
+
+.zap{
+background:#25D366;
+padding:10px 20px;
+border-radius:25px;
+text-decoration:none;
+color:white;
+font-size:14px;
+}
+
+/* HERO */
+
+.hero{
+background:url("https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=1500&q=80");
+background-size:cover;
+background-position:center;
+height:320px;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:36px;
+font-weight:600;
+}
+
+/* LAYOUT */
+
+.container{
+display:grid;
+grid-template-columns:1fr 320px;
+gap:40px;
+padding:40px 5%;
+}
+
+@media(max-width:900px){
+
+.container{
+grid-template-columns:1fr;
+}
+
+}
+
+/* PRODUTOS */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:30px;
+}
+
+.card{
+background:white;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 10px 20px rgba(0,0,0,0.08);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+}
+
+.card img{
+width:100%;
+height:240px;
+object-fit:contain;
+background:#f8f8f8;
+padding:20px;
+}
+
+.card-body{
+padding:20px;
+text-align:center;
+}
+
+.card h3{
+font-size:18px;
+margin-bottom:8px;
+}
+
+.card p{
+font-size:13px;
+color:#777;
+margin-bottom:12px;
+}
+
+.price{
+font-size:20px;
+font-weight:600;
+color:#b88b2d;
+margin-bottom:15px;
+}
+
+.btn{
+background:black;
+color:white;
+border:none;
+width:100%;
+padding:12px;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* CARRINHO */
+
+.cart{
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 10px 20px rgba(0,0,0,0.08);
+position:sticky;
+top:20px;
+}
+
+.cart h2{
+margin-bottom:15px;
+}
+
+.cart-item{
+border-bottom:1px solid #eee;
+padding:10px 0;
+}
+
+.qty{
+display:flex;
+gap:6px;
+margin-top:5px;
+}
+
+.qty button{
+width:24px;
+height:24px;
+border:none;
+background:#b88b2d;
+color:white;
+cursor:pointer;
+border-radius:4px;
+}
+
+.remove{
+color:red;
+font-size:12px;
+cursor:pointer;
+}
+
+.total{
+margin-top:15px;
+font-weight:600;
+display:flex;
+justify-content:space-between;
+}
+
+.btn-zap{
+margin-top:15px;
+background:#25D366;
+border:none;
+width:100%;
+padding:14px;
+border-radius:8px;
+color:white;
+font-weight:600;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">Moto Jhon</div>
+
+<a class="zap" href="https://wa.me/5521965109590">
+WhatsApp
+</a>
+
+</nav>
+
+<div class="hero">
+
+Perfumes Importados
+
+</div>
+
+<div class="container">
+
+<div class="grid" id="produtos"></div>
+
+<div class="cart">
+
+<h2>Seu pedido</h2>
+
+<div id="cart-items">
+Carrinho vazio
+</div>
+
+<div class="total">
+<span>Total</span>
+<span id="total">R$ 0</span>
+</div>
+
+<button class="btn-zap" onclick="checkout()">
+Finalizar no WhatsApp
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+const produtos=[
+
+{
+nome:"Bleu de Chanel",
+preco:890,
+img:"https://m.media-amazon.com/images/I/61mI-9Yp+jL._AC_SL1000_.jpg",
+desc:"Elegância e sofisticação."
+},
+
+{
+nome:"Sauvage Dior",
+preco:720,
+img:"https://m.media-amazon.com/images/I/71N+XSHm5EL._AC_SL1500_.jpg",
+desc:"Frescor intenso e masculino."
+},
+
+{
+nome:"Good Girl",
+preco:650,
+img:"https://m.media-amazon.com/images/I/61rFZ+YAYSL._AC_SL1000_.jpg",
+desc:"Fragrância feminina poderosa."
+},
+
+{
+nome:"1 Million",
+preco:680,
+img:"https://m.media-amazon.com/images/I/71r0A4+4K-L._AC_SL1500_.jpg",
+desc:"Perfume marcante e luxuoso."
+}
+
+]
+
+const grid=document.getElementById("produtos")
+
+produtos.forEach(p=>{
+
+grid.innerHTML+=`
+
+<div class="card">
+
+<img src="${p.img}">
+
+<div class="card-body">
+
+<h3>${p.nome}</h3>
+
+<p>${p.desc}</p>
+
+<div class="price">R$ ${p.preco}</div>
+
+<button class="btn" onclick="add('${p.nome}',${p.preco})">
+Adicionar
+</button>
+
+</div>
+
+</div>
+
+`
+
+})
+
+let cart=[]
+
+function add(nome,preco){
+
+const item=cart.find(i=>i.nome===nome)
+
+if(item){
+item.qtd++
+}else{
+cart.push({nome,preco,qtd:1})
+}
+
+render()
+
+}
+
+function alterar(nome,valor){
+
+const item=cart.find(i=>i.nome===nome)
+
+item.qtd+=valor
+
+if(item.qtd<=0){
+
+cart=cart.filter(i=>i.nome!==nome)
+
+}
+
+render()
+
+}
+
+function remover(nome){
+
+cart=cart.filter(i=>i.nome!==nome)
+
+render()
+
+}
+
+function render(){
+
+const el=document.getElementById("cart-items")
+
+if(cart.length===0){
+
+el.innerHTML="Carrinho vazio"
+document.getElementById("total").innerText="R$ 0"
+return
+
+}
+
+let html=""
+let total=0
+
+cart.forEach(i=>{
+
+total+=i.preco*i.qtd
+
+html+=`
+
+<div class="cart-item">
+
+<strong>${i.nome}</strong>
+
+<div class="qty">
+
+<button onclick="alterar('${i.nome}',-1)">-</button>
+
+<span>${i.qtd}</span>
+
+<button onclick="alterar('${i.nome}',1)">+</button>
+
+</div>
+
+<div class="remove" onclick="remover('${i.nome}')">
+remover
+</div>
+
+</div>
+
+`
+
+})
+
+el.innerHTML=html
+document.getElementById("total").innerText="R$ "+total
+
+}
+
+function checkout(){
+
+if(cart.length===0){
+
+alert("Adicione produtos")
+
+return
+
+}
+
+let msg="Pedido:%0A"
+let total=0
+
+cart.forEach(i=>{
+
+msg+=`${i.qtd}x ${i.nome}%0A`
+total+=i.preco*i.qtd
+
+})
+
+msg+=`%0ATotal: R$ ${total}`
+
+window.open(`https://wa.me/5521965109590?text=${msg}`)
+
+}
+
+</script>
+
+</body>
+</html>
+```
