@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MOTO JHON</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Perfume Luxo</title>
 
 <style>
 
@@ -15,7 +12,7 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Poppins;
+font-family:Arial;
 }
 
 body{
@@ -25,59 +22,54 @@ color:white;
 
 /* NAVBAR */
 
-nav{
+header{
 position:fixed;
 top:0;
 width:100%;
-background:#111;
-padding:15px 40px;
-display:flex;
-justify-content:space-between;
-align-items:center;
+background:#000;
 z-index:1000;
 }
 
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+}
+
 .logo{
-font-size:22px;
-font-weight:600;
 color:gold;
+font-size:22px;
+font-weight:bold;
 }
 
-.menu a{
-margin:0 15px;
-text-decoration:none;
+nav ul{
+display:flex;
+gap:25px;
+list-style:none;
+}
+
+nav a{
 color:white;
-transition:.3s;
+text-decoration:none;
 }
 
-.menu a:hover{
+nav a:hover{
 color:gold;
 }
 
 .cart-btn{
 cursor:pointer;
-font-size:22px;
-position:relative;
+font-size:20px;
 }
 
-.cart-count{
-position:absolute;
-top:-8px;
-right:-10px;
-background:red;
-border-radius:50%;
-font-size:12px;
-padding:3px 6px;
-}
-
-/* BANNER ROTATIVO */
+/* BANNER */
 
 .banner{
-position:relative;
-width:100%;
 height:70vh;
-overflow:hidden;
 margin-top:70px;
+position:relative;
+overflow:hidden;
 }
 
 .slide{
@@ -87,7 +79,7 @@ height:100%;
 background-size:cover;
 background-position:center;
 opacity:0;
-transition:opacity 1s ease;
+transition:1s;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -98,82 +90,62 @@ opacity:1;
 }
 
 .slide-content{
-background:rgba(0,0,0,0.6);
-padding:30px 50px;
+background:rgba(0,0,0,.6);
+padding:30px 60px;
 border-radius:10px;
 text-align:center;
 }
 
 .slide-content h2{
 font-size:40px;
-margin-bottom:10px;
 }
 
 .banner-btn{
 position:absolute;
 top:50%;
 transform:translateY(-50%);
-background:rgba(0,0,0,0.6);
-color:white;
-border:none;
 font-size:25px;
-padding:10px 15px;
+background:rgba(0,0,0,.5);
+border:none;
+color:white;
+padding:10px;
 cursor:pointer;
 }
 
-.prev{left:20px;}
-.next{right:20px;}
-
-.indicators{
-position:absolute;
-bottom:20px;
-left:50%;
-transform:translateX(-50%);
-display:flex;
-gap:10px;
-}
-
-.dot{
-width:12px;
-height:12px;
-background:#ccc;
-border-radius:50%;
-cursor:pointer;
-}
-
-.dot.active{
-background:gold;
-}
+.prev{left:20px}
+.next{right:20px}
 
 /* BUSCA */
 
 .search{
 text-align:center;
-margin:40px 0;
+padding:40px;
 }
 
 .search input{
-padding:12px;
+padding:10px;
 width:300px;
+border-radius:5px;
 border:none;
-border-radius:6px;
 }
 
 /* CATEGORIAS */
 
 .categorias{
-text-align:center;
+display:flex;
+justify-content:center;
+gap:15px;
+margin-bottom:30px;
+flex-wrap:wrap;
 }
 
 .categorias button{
-padding:10px 20px;
-margin:5px;
-background:#222;
+padding:8px 15px;
 border:none;
+background:#222;
 color:white;
 cursor:pointer;
-border-radius:6px;
-transition:.3s;
+border-radius:5px;
 }
 
 .categorias button:hover{
@@ -184,71 +156,66 @@ color:black;
 /* PRODUTOS */
 
 .produtos{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
 padding:40px;
 }
 
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+}
+
 .card{
-background:#181818;
-border-radius:12px;
-overflow:hidden;
-transition:.4s;
-box-shadow:0 10px 30px rgba(0,0,0,.5);
+background:#1a1a1a;
+padding:15px;
+border-radius:10px;
 cursor:pointer;
+transition:.3s;
+position:relative;
+text-align:center;
 }
 
 .card:hover{
-transform:translateY(-10px);
-box-shadow:0 15px 40px rgba(255,215,0,.3);
+transform:translateY(-5px);
+box-shadow:0 0 15px gold;
 }
 
 .card img{
 width:100%;
-height:220px;
-object-fit:cover;
-transition:.4s;
-}
-
-.card:hover img{
-transform:scale(1.1);
-}
-
-.info{
-padding:20px;
-text-align:center;
-}
-
-.estrelas{
-color:gold;
+border-radius:10px;
 }
 
 .preco{
 color:gold;
-font-size:20px;
+font-weight:bold;
 margin:10px 0;
 }
 
-.qtd{
-width:60px;
-padding:5px;
-margin:10px;
+.badge{
+position:absolute;
+top:10px;
+left:10px;
+background:red;
+padding:5px 10px;
+font-size:12px;
+border-radius:5px;
 }
 
-.btn{
-background:gold;
-border:none;
-padding:10px 20px;
-border-radius:6px;
-cursor:pointer;
+.estoque{
+font-size:12px;
+color:#aaa;
+}
+
+.stars{
+color:gold;
+margin-bottom:5px;
 }
 
 /* CARRINHO */
 
 .cart{
 position:fixed;
-right:-350px;
+right:-400px;
 top:0;
 width:350px;
 height:100%;
@@ -256,103 +223,76 @@ background:#111;
 padding:20px;
 transition:.4s;
 overflow:auto;
-z-index:2000;
 }
 
 .cart.open{
 right:0;
 }
 
-.close-cart{
-font-size:22px;
-cursor:pointer;
-float:right;
-}
-
 .cart-item{
 display:flex;
 justify-content:space-between;
-align-items:center;
-margin:15px 0;
+margin:10px 0;
 }
 
 .cart-item button{
-padding:2px 8px;
-}
-
-.remove{
-cursor:pointer;
-color:red;
-}
-
-.total{
-margin-top:20px;
-font-size:20px;
-}
-
-.finalizar{
-display:block;
-margin-top:20px;
-background:#25D366;
-padding:12px;
-text-align:center;
-border-radius:6px;
-text-decoration:none;
+background:red;
+border:none;
 color:white;
-font-weight:bold;
+padding:5px;
+cursor:pointer;
 }
 
-/* MODAL */
+/* WHATSAPP FLOAT */
 
-.modal{
+.whatsapp{
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.8);
-display:none;
+bottom:20px;
+right:20px;
+background:#25D366;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
 align-items:center;
 justify-content:center;
-z-index:3000;
+font-size:28px;
+text-decoration:none;
+color:white;
 }
 
-.modal-content{
-background:#111;
-padding:30px;
-border-radius:10px;
+/* FOOTER */
+
+footer{
+background:#000;
 text-align:center;
-max-width:400px;
-}
-
-.modal img{
-width:100%;
-margin-bottom:20px;
+padding:40px;
+margin-top:40px;
 }
 
 </style>
-
 </head>
 
 <body>
 
+<header>
+
 <nav>
 
-<div class="logo">MOTO JHON</div>
+<div class="logo">Perfume Luxo</div>
 
-<div class="menu">
-<a href="#">Home</a>
-<a href="#produtos">Produtos</a>
-<a href="#sobre">Sobre</a>
-<a href="#contato">Contato</a>
-</div>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#produtos">Produtos</a></li>
+<li><a href="#sobre">Sobre</a></li>
+<li><a href="#contato">Contato</a></li>
+</ul>
 
-<div class="cart-btn" onclick="toggleCart()">
-🛒
-<span class="cart-count" id="cartCount">0</span>
-</div>
+<div class="cart-btn" onclick="toggleCart()">🛒</div>
 
 </nav>
+
+</header>
 
 <!-- BANNER -->
 
@@ -368,131 +308,134 @@ margin-bottom:20px;
 <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1585386959984-a41552231658')">
 <div class="slide-content">
 <h2>Fragrâncias Exclusivas</h2>
-<p>Para quem gosta de presença</p>
-</div>
-</div>
-
-<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1600185365483-26d7a4cc7519')">
-<div class="slide-content">
-<h2>Luxo em cada detalhe</h2>
-<p>Escolha seu perfume ideal</p>
+<p>Luxo em cada detalhe</p>
 </div>
 </div>
 
 <button class="banner-btn prev" onclick="mudarSlide(-1)">❮</button>
 <button class="banner-btn next" onclick="mudarSlide(1)">❯</button>
 
-<div class="indicators">
-<span class="dot active" onclick="slideAtual(0)"></span>
-<span class="dot" onclick="slideAtual(1)"></span>
-<span class="dot" onclick="slideAtual(2)"></span>
-</div>
+</section>
+
+<!-- BUSCA -->
+
+<section class="search">
+
+<input type="text" placeholder="Buscar perfume..." onkeyup="buscar(this.value)">
 
 </section>
 
-<div class="search">
-<input type="text" id="search" placeholder="Buscar perfume...">
-</div>
+<!-- PRODUTOS -->
+
+<section class="produtos" id="produtos">
 
 <div class="categorias">
+
 <button onclick="filtrar('todos')">Todos</button>
 <button onclick="filtrar('amadeirado')">Amadeirado</button>
+<button onclick="filtrar('oriental')">Oriental</button>
 <button onclick="filtrar('citrico')">Cítrico</button>
 <button onclick="filtrar('doce')">Doce</button>
-<button onclick="filtrar('oriental')">Oriental</button>
+
 </div>
 
-<section class="produtos" id="produtos"></section>
+<div class="grid" id="grid"></div>
+
+</section>
+
+<!-- CARRINHO -->
 
 <div class="cart" id="cart">
 
-<span class="close-cart" onclick="toggleCart()">✖</span>
+<h2>Carrinho</h2>
 
-<h2>Seu Carrinho</h2>
+<div id="cartItens"></div>
 
-<div id="cartItems"></div>
+<br>
 
-<div class="total" id="total"></div>
+<button onclick="toggleCart()">Fechar</button>
 
-<a id="finalizar" class="finalizar" target="_blank">
-Finalizar no WhatsApp
-</a>
+<br><br>
 
-</div>
-
-<div class="modal" id="modal">
-
-<div class="modal-content">
-
-<img id="modalImg">
-
-<h3 id="modalNome"></h3>
-
-<p id="modalPreco"></p>
-
-<button onclick="fecharModal()">Fechar</button>
+<button onclick="finalizar()">Finalizar no WhatsApp</button>
 
 </div>
 
-</div>
+<!-- SOBRE -->
+
+<section id="sobre">
+
+<footer>
+
+<h2>Sobre</h2>
+<p>Especialistas em perfumes importados</p>
+
+</footer>
+
+</section>
+
+<!-- CONTATO -->
+
+<section id="contato">
+
+<footer>
+
+<h2>Contato</h2>
+
+<p>WhatsApp: Marcele</p>
+<p>Email: motojhon@gmail.com</p>
+
+</footer>
+
+</section>
+
+<a class="whatsapp" href="https://wa.me/5521965109590" target="_blank">💬</a>
 
 <script>
 
-const zap="5521965109590"
+/* PERFUMES */
 
-const produtos=[
+let categorias=["amadeirado","oriental","citrico","doce"]
 
-{name:"Perfume 1",categoria:"amadeirado",preco:390,img:"https://images.unsplash.com/photo-1541643600914-78b084683601"},
-{name:"Perfume 2",categoria:"amadeirado",preco:410,img:"https://images.unsplash.com/photo-1585386959984-a41552231658"},
-{name:"Perfume 3",categoria:"amadeirado",preco:420,img:"https://images.unsplash.com/photo-1600180758890-6b94519a8ba3"},
+let perfumes=[]
 
-{name:"Perfume 4",categoria:"citrico",preco:350,img:"https://images.unsplash.com/photo-1595425970377-7f0b9e7d7b2f"},
-{name:"Perfume 5",categoria:"citrico",preco:360,img:"https://images.unsplash.com/photo-1615634260167-c8cdede054de"},
-{name:"Perfume 6",categoria:"citrico",preco:380,img:"https://images.unsplash.com/photo-1523293182086-7651a899d37f"},
+for(let i=1;i<=12;i++){
 
-{name:"Perfume 7",categoria:"doce",preco:430,img:"https://images.unsplash.com/photo-1587019158091-1a103c5dd17f"},
-{name:"Perfume 8",categoria:"doce",preco:440,img:"https://images.unsplash.com/photo-1592914610354-fd354ea45e48"},
-{name:"Perfume 9",categoria:"doce",preco:410,img:"https://images.unsplash.com/photo-1600185365483-26d7a4cc7519"},
+perfumes.push({
+nome:"Perfume "+i,
+preco:199,
+categoria:categorias[i%4],
+img:"https://source.unsplash.com/400x400/?perfume"
+})
 
-{name:"Perfume 10",categoria:"oriental",preco:470,img:"https://images.unsplash.com/photo-1615634260167-c8cdede054de"},
-{name:"Perfume 11",categoria:"oriental",preco:450,img:"https://images.unsplash.com/photo-1585386959984-a41552231658"},
-{name:"Perfume 12",categoria:"oriental",preco:480,img:"https://images.unsplash.com/photo-1541643600914-78b084683601"}
-
-]
-
-let carrinho=JSON.parse(localStorage.getItem("carrinho"))||[]
-
-function salvar(){
-localStorage.setItem("carrinho",JSON.stringify(carrinho))
 }
 
-function render(lista){
+/* RENDER */
 
-let html=""
+function render(lista=perfumes){
+
+let grid=document.getElementById("grid")
+grid.innerHTML=""
 
 lista.forEach((p,i)=>{
 
-html+=`
+grid.innerHTML+=`
 
-<div class="card" onclick="abrirModal(${i})">
+<div class="card">
+
+${i==1||i==4||i==7?'<div class="badge">Mais Vendido</div>':''}
 
 <img src="${p.img}">
 
-<div class="info">
+<h3>${p.nome}</h3>
 
-<h3>${p.name}</h3>
-
-<div class="estrelas">★★★★★</div>
+<div class="stars">★★★★★</div>
 
 <div class="preco">R$ ${p.preco}</div>
 
-<input type="number" min="1" value="1" class="qtd" id="q${i}">
+<div class="estoque">Restam poucas unidades</div>
 
-<button class="btn" onclick="event.stopPropagation();addCarrinho(${i})">
-Adicionar
-</button>
-
-</div>
+<button onclick="addCarrinho(${i})">Adicionar</button>
 
 </div>
 
@@ -500,63 +443,74 @@ Adicionar
 
 })
 
-document.getElementById("produtos").innerHTML=html
+}
+
+render()
+
+/* BUSCA */
+
+function buscar(txt){
+
+txt=txt.toLowerCase()
+
+let filtrado=perfumes.filter(p=>p.nome.toLowerCase().includes(txt))
+
+render(filtrado)
 
 }
 
-render(produtos)
+/* FILTRO */
+
+function filtrar(cat){
+
+if(cat=="todos") render()
+
+else{
+
+let filtrado=perfumes.filter(p=>p.categoria==cat)
+
+render(filtrado)
+
+}
+
+}
+
+/* CARRINHO */
+
+let carrinho=[]
 
 function addCarrinho(i){
 
-let qtd=parseInt(document.getElementById("q"+i).value)
+let item=carrinho.find(p=>p.nome==perfumes[i].nome)
 
-let produto=produtos[i]
+if(item){
 
-let existente=carrinho.find(p=>p.name===produto.name)
+item.qtd++
 
-if(existente){
-existente.qtd+=qtd
 }else{
-carrinho.push({...produto,qtd:qtd})
-}
 
-salvar()
-updateCart()
+carrinho.push({...perfumes[i],qtd:1})
 
 }
 
-function updateCart(){
+renderCart()
 
-let html=""
-let total=0
-let itens=0
+}
+
+function renderCart(){
+
+let div=document.getElementById("cartItens")
+div.innerHTML=""
 
 carrinho.forEach((p,i)=>{
 
-let subtotal=p.preco*p.qtd
-
-total+=subtotal
-itens+=p.qtd
-
-html+=`
+div.innerHTML+=`
 
 <div class="cart-item">
 
-<span>${p.name}</span>
+${p.nome} (${p.qtd})
 
-<div>
-
-<button onclick="diminuir(${i})">-</button>
-
-${p.qtd}
-
-<button onclick="aumentar(${i})">+</button>
-
-</div>
-
-<span>R$${subtotal}</span>
-
-<span class="remove" onclick="remover(${i})">❌</span>
+<button onclick="remover(${i})">X</button>
 
 </div>
 
@@ -564,56 +518,50 @@ ${p.qtd}
 
 })
 
-document.getElementById("cartItems").innerHTML=html
-document.getElementById("total").innerText="Total: R$ "+total
-document.getElementById("cartCount").innerText=itens
+}
 
-let msg="Olá, quero comprar:%0A%0A"
+function remover(i){
+
+carrinho.splice(i,1)
+
+renderCart()
+
+}
+
+function toggleCart(){
+
+document.getElementById("cart").classList.toggle("open")
+
+}
+
+/* WHATSAPP */
+
+function finalizar(){
+
+let msg="Olá, gostaria de comprar:%0A"
 
 carrinho.forEach(p=>{
-msg+=`${p.name} x${p.qtd} - R$${p.preco*p.qtd}%0A`
+msg+=`${p.nome} x${p.qtd}%0A`
 })
 
-msg+=`%0ATotal: R$${total}`
-
-document.getElementById("finalizar").href=
-`https://wa.me/${zap}?text=${msg}`
-
-salvar()
+window.open("https://wa.me/5521965109590?text="+msg)
 
 }
 
-/* SLIDER */
+/* BANNER */
 
 let slides=document.querySelectorAll(".slide")
-let dots=document.querySelectorAll(".dot")
 let index=0
-
-function mostrarSlide(i){
-
-slides.forEach(s=>s.classList.remove("active"))
-dots.forEach(d=>d.classList.remove("active"))
-
-slides[i].classList.add("active")
-dots[i].classList.add("active")
-
-}
 
 function mudarSlide(n){
 
 index+=n
 
-if(index>=slides.length) index=0
-if(index<0) index=slides.length-1
+if(index>=slides.length)index=0
+if(index<0)index=slides.length-1
 
-mostrarSlide(index)
-
-}
-
-function slideAtual(i){
-
-index=i
-mostrarSlide(index)
+slides.forEach(s=>s.classList.remove("active"))
+slides[index].classList.add("active")
 
 }
 
@@ -622,65 +570,6 @@ setInterval(()=>{
 mudarSlide(1)
 
 },5000)
-
-function toggleCart(){
-document.getElementById("cart").classList.toggle("open")
-}
-
-function remover(i){
-carrinho.splice(i,1)
-updateCart()
-}
-
-function aumentar(i){
-carrinho[i].qtd++
-updateCart()
-}
-
-function diminuir(i){
-
-if(carrinho[i].qtd>1){
-carrinho[i].qtd--
-}else{
-carrinho.splice(i,1)
-}
-
-updateCart()
-
-}
-
-function abrirModal(i){
-
-let p=produtos[i]
-
-document.getElementById("modal").style.display="flex"
-
-document.getElementById("modalImg").src=p.img
-document.getElementById("modalNome").innerText=p.name
-document.getElementById("modalPreco").innerText="R$ "+p.preco
-
-}
-
-function fecharModal(){
-document.getElementById("modal").style.display="none"
-}
-
-function filtrar(cat){
-
-if(cat==="todos") render(produtos)
-else render(produtos.filter(p=>p.categoria===cat))
-
-}
-
-document.getElementById("search").addEventListener("keyup",function(){
-
-let termo=this.value.toLowerCase()
-
-render(produtos.filter(p=>p.name.toLowerCase().includes(termo)))
-
-})
-
-updateCart()
 
 </script>
 
