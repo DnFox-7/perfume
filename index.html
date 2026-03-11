@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
 
 <meta charset="UTF-8">
@@ -71,35 +70,93 @@ font-size:12px;
 padding:3px 6px;
 }
 
-/* HERO */
+/* BANNER ROTATIVO */
 
-.hero{
+.banner{
+position:relative;
+width:100%;
 height:70vh;
+overflow:hidden;
+margin-top:70px;
+}
+
+.slide{
+position:absolute;
+width:100%;
+height:100%;
+background-size:cover;
+background-position:center;
+opacity:0;
+transition:opacity 1s ease;
 display:flex;
 align-items:center;
 justify-content:center;
-background:url("https://images.unsplash.com/photo-1595425970377-7f0b9e7d7b2f") center/cover;
 }
 
-.hero h1{
-font-size:50px;
+.slide.active{
+opacity:1;
+}
+
+.slide-content{
 background:rgba(0,0,0,0.6);
-padding:20px 40px;
+padding:30px 50px;
 border-radius:10px;
+text-align:center;
+}
+
+.slide-content h2{
+font-size:40px;
+margin-bottom:10px;
+}
+
+.banner-btn{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+background:rgba(0,0,0,0.6);
+color:white;
+border:none;
+font-size:25px;
+padding:10px 15px;
+cursor:pointer;
+}
+
+.prev{left:20px;}
+.next{right:20px;}
+
+.indicators{
+position:absolute;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+gap:10px;
+}
+
+.dot{
+width:12px;
+height:12px;
+background:#ccc;
+border-radius:50%;
+cursor:pointer;
+}
+
+.dot.active{
+background:gold;
 }
 
 /* BUSCA */
 
 .search{
 text-align:center;
-margin:120px 0 40px;
+margin:40px 0;
 }
 
 .search input{
 padding:12px;
 width:300px;
-border-radius:6px;
 border:none;
+border-radius:6px;
 }
 
 /* CATEGORIAS */
@@ -245,7 +302,7 @@ color:white;
 font-weight:bold;
 }
 
-/* MODAL PERFUME */
+/* MODAL */
 
 .modal{
 position:fixed;
@@ -297,8 +354,40 @@ margin-bottom:20px;
 
 </nav>
 
-<section class="hero">
-<h1>Perfumes Importados</h1>
+<!-- BANNER -->
+
+<section class="banner">
+
+<div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1595425970377-7f0b9e7d7b2f')">
+<div class="slide-content">
+<h2>Perfumes Importados</h2>
+<p>Elegância e sofisticação</p>
+</div>
+</div>
+
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1585386959984-a41552231658')">
+<div class="slide-content">
+<h2>Fragrâncias Exclusivas</h2>
+<p>Para quem gosta de presença</p>
+</div>
+</div>
+
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1600185365483-26d7a4cc7519')">
+<div class="slide-content">
+<h2>Luxo em cada detalhe</h2>
+<p>Escolha seu perfume ideal</p>
+</div>
+</div>
+
+<button class="banner-btn prev" onclick="mudarSlide(-1)">❮</button>
+<button class="banner-btn next" onclick="mudarSlide(1)">❯</button>
+
+<div class="indicators">
+<span class="dot active" onclick="slideAtual(0)"></span>
+<span class="dot" onclick="slideAtual(1)"></span>
+<span class="dot" onclick="slideAtual(2)"></span>
+</div>
+
 </section>
 
 <div class="search">
@@ -306,18 +395,14 @@ margin-bottom:20px;
 </div>
 
 <div class="categorias">
-
 <button onclick="filtrar('todos')">Todos</button>
 <button onclick="filtrar('amadeirado')">Amadeirado</button>
 <button onclick="filtrar('citrico')">Cítrico</button>
 <button onclick="filtrar('doce')">Doce</button>
 <button onclick="filtrar('oriental')">Oriental</button>
-
 </div>
 
 <section class="produtos" id="produtos"></section>
-
-<!-- CARRINHO -->
 
 <div class="cart" id="cart">
 
@@ -334,8 +419,6 @@ Finalizar no WhatsApp
 </a>
 
 </div>
-
-<!-- MODAL PERFUME -->
 
 <div class="modal" id="modal">
 
@@ -432,17 +515,12 @@ let produto=produtos[i]
 let existente=carrinho.find(p=>p.name===produto.name)
 
 if(existente){
-
 existente.qtd+=qtd
-
 }else{
-
 carrinho.push({...produto,qtd:qtd})
-
 }
 
 salvar()
-
 updateCart()
 
 }
@@ -505,6 +583,50 @@ salvar()
 
 }
 
+/* SLIDER */
+
+let slides=document.querySelectorAll(".slide")
+let dots=document.querySelectorAll(".dot")
+let index=0
+
+function mostrarSlide(i){
+
+slides.forEach(s=>s.classList.remove("active"))
+dots.forEach(d=>d.classList.remove("active"))
+
+slides[i].classList.add("active")
+dots[i].classList.add("active")
+
+}
+
+function mudarSlide(n){
+
+index+=n
+
+if(index>=slides.length) index=0
+if(index<0) index=slides.length-1
+
+mostrarSlide(index)
+
+}
+
+function slideAtual(i){
+
+index=i
+mostrarSlide(index)
+
+}
+
+setInterval(()=>{
+
+mudarSlide(1)
+
+},5000)
+
+function toggleCart(){
+document.getElementById("cart").classList.toggle("open")
+}
+
 function remover(i){
 carrinho.splice(i,1)
 updateCart()
@@ -525,10 +647,6 @@ carrinho.splice(i,1)
 
 updateCart()
 
-}
-
-function toggleCart(){
-document.getElementById("cart").classList.toggle("open")
 }
 
 function abrirModal(i){
