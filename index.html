@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Moto Jhon | Perfumes Importados</title>
+<title>Perfumes Importados</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -17,81 +17,109 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:"Poppins",sans-serif;
+font-family:Poppins;
 }
 
 body{
-background:#f3f3f3;
+background:#f6f6f6;
 color:#222;
 }
 
 /* NAVBAR */
 
 nav{
+
 background:#0b0b0b;
-padding:18px 6%;
+color:white;
+
 display:flex;
 justify-content:space-between;
 align-items:center;
-box-shadow:0 5px 20px rgba(0,0,0,0.25);
+
+padding:18px 6%;
+
+position:sticky;
+top:0;
+z-index:1000;
+
 }
 
 .logo{
-color:#fff;
 font-size:22px;
 font-weight:600;
 letter-spacing:1px;
 }
 
-.zap{
-background:#25D366;
-color:white;
-padding:10px 22px;
-border-radius:30px;
-text-decoration:none;
-font-size:14px;
-font-weight:500;
-transition:.3s;
+.menu{
+display:flex;
+gap:25px;
 }
 
-.zap:hover{
-transform:scale(1.05);
+.menu a{
+
+color:white;
+text-decoration:none;
+font-size:14px;
+
+}
+
+.menu a:hover{
+color:#d4af37;
+}
+
+.whatsapp{
+
+background:#25D366;
+padding:10px 20px;
+border-radius:30px;
+text-decoration:none;
+color:white;
+font-size:14px;
+
 }
 
 /* HERO */
 
 .hero{
 
-height:360px;
+height:420px;
 
 background:
 linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),
-url("https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=1500&q=80");
+url("https://images.unsplash.com/photo-1594035910387-fea47794261f");
 
 background-size:cover;
 background-position:center;
 
 display:flex;
-align-items:center;
+flex-direction:column;
 justify-content:center;
-text-align:center;
-color:white;
+align-items:center;
 
-font-size:40px;
-font-weight:600;
-letter-spacing:1px;
+color:white;
+text-align:center;
 
 }
 
-/* LAYOUT */
+.hero h1{
+font-size:46px;
+margin-bottom:10px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+/* CONTAINER */
 
 .container{
 max-width:1300px;
 margin:auto;
+padding:50px 5%;
+
 display:grid;
-grid-template-columns:1fr 330px;
+grid-template-columns:1fr 320px;
 gap:40px;
-padding:40px 5%;
 }
 
 @media(max-width:900px){
@@ -102,47 +130,52 @@ grid-template-columns:1fr;
 
 }
 
-/* GRID PRODUTOS */
+/* PRODUTOS */
 
 .grid{
+
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
 gap:30px;
+
 }
 
-/* CARD */
-
 .card{
+
 background:white;
 border-radius:14px;
 overflow:hidden;
+
 box-shadow:0 10px 25px rgba(0,0,0,0.08);
-transition:.35s;
-position:relative;
+
+transition:.3s;
+
 }
 
 .card:hover{
+
 transform:translateY(-8px);
 box-shadow:0 15px 40px rgba(0,0,0,0.18);
+
 }
 
 .card img{
+
 width:100%;
-height:240px;
-object-fit:contain;
-background:#fafafa;
-padding:25px;
+height:230px;
+object-fit:cover;
+
 }
 
 .card-body{
+
 padding:20px;
 text-align:center;
+
 }
 
 .card h3{
-font-size:18px;
-margin-bottom:8px;
-font-weight:600;
+margin-bottom:10px;
 }
 
 .card p{
@@ -152,116 +185,132 @@ margin-bottom:15px;
 }
 
 .price{
-font-size:22px;
+
+font-size:20px;
 font-weight:600;
-color:#caa44b;
+color:#d4af37;
 margin-bottom:15px;
+
 }
 
 .btn{
+
 background:#111;
 color:white;
 border:none;
+
 padding:12px;
 width:100%;
+
 border-radius:8px;
 cursor:pointer;
-font-weight:500;
-transition:.3s;
+
 }
 
 .btn:hover{
-background:#caa44b;
+background:#d4af37;
 }
 
 /* CARRINHO */
 
 .cart{
+
 background:white;
-padding:22px;
-border-radius:14px;
+padding:20px;
+
+border-radius:12px;
+
 box-shadow:0 10px 25px rgba(0,0,0,0.08);
+
 position:sticky;
-top:20px;
+top:80px;
+
 }
 
 .cart h2{
 margin-bottom:15px;
-font-size:20px;
 }
 
 .cart-item{
+
 border-bottom:1px solid #eee;
 padding:10px 0;
-}
 
-.cart-item strong{
-display:block;
-font-size:14px;
 }
 
 .qty{
+
 display:flex;
 gap:6px;
-align-items:center;
-margin-top:6px;
+margin-top:5px;
+
 }
 
 .qty button{
-width:26px;
-height:26px;
-border:none;
-background:#caa44b;
-color:white;
-border-radius:5px;
-cursor:pointer;
-}
 
-.qty span{
-font-size:14px;
+width:25px;
+height:25px;
+
+border:none;
+
+background:#d4af37;
+color:white;
+
+border-radius:4px;
+cursor:pointer;
+
 }
 
 .remove{
-color:#d33;
+
+color:red;
 font-size:12px;
 cursor:pointer;
-margin-top:4px;
+
 }
 
 .total{
+
 margin-top:15px;
-font-size:16px;
 font-weight:600;
+
 display:flex;
 justify-content:space-between;
+
 }
 
 .btn-zap{
+
 margin-top:15px;
+
 background:#25D366;
+
 border:none;
 width:100%;
+
 padding:14px;
+
 border-radius:8px;
+
 color:white;
 font-weight:600;
-cursor:pointer;
-transition:.3s;
-}
 
-.btn-zap:hover{
-transform:scale(1.03);
+cursor:pointer;
+
 }
 
 /* FOOTER */
 
 footer{
+
 margin-top:40px;
 background:#111;
 color:#aaa;
+
 text-align:center;
-padding:25px;
-font-size:14px;
+
+padding:30px;
+
 }
 
 </style>
@@ -274,15 +323,27 @@ font-size:14px;
 
 <div class="logo">Moto Jhon</div>
 
-<a class="zap" href="https://wa.me/5521965109590">
+<div class="menu">
+
+<a href="#">Início</a>
+<a href="#">Perfumes</a>
+<a href="#">Contato</a>
+
+</div>
+
+<a class="whatsapp" href="https://wa.me/5521965109590">
 WhatsApp
 </a>
 
 </nav>
 
-<div class="hero">
-Perfumes Importados
-</div>
+<section class="hero">
+
+<h1>Perfumes Importados</h1>
+
+<p>Fragrâncias marcantes para todos os estilos</p>
+
+</section>
 
 <div class="container">
 
@@ -290,15 +351,17 @@ Perfumes Importados
 
 <div class="cart">
 
-<h2>Seu Pedido</h2>
+<h2>Seu pedido</h2>
 
 <div id="cart-items">
 Carrinho vazio
 </div>
 
 <div class="total">
+
 <span>Total</span>
 <span id="total">R$ 0</span>
+
 </div>
 
 <button class="btn-zap" onclick="checkout()">
@@ -310,40 +373,27 @@ Finalizar no WhatsApp
 </div>
 
 <footer>
+
 Perfumes Importados • Atendimento via WhatsApp
+
 </footer>
 
 <script>
 
 const produtos=[
 
-{
-nome:"Bleu de Chanel",
-preco:890,
-img:"https://m.media-amazon.com/images/I/61mI-9Yp+jL._AC_SL1000_.jpg",
-desc:"Elegância e sofisticação."
-},
-
-{
-nome:"Sauvage Dior",
-preco:720,
-img:"https://m.media-amazon.com/images/I/71N+XSHm5EL._AC_SL1500_.jpg",
-desc:"Frescor intenso e masculino."
-},
-
-{
-nome:"Good Girl",
-preco:650,
-img:"https://m.media-amazon.com/images/I/61rFZ+YAYSL._AC_SL1000_.jpg",
-desc:"Fragrância feminina poderosa."
-},
-
-{
-nome:"1 Million",
-preco:680,
-img:"https://m.media-amazon.com/images/I/71r0A4+4K-L._AC_SL1500_.jpg",
-desc:"Perfume marcante e luxuoso."
-}
+{nome:"Perfume 1",preco:350,img:"https://images.unsplash.com/photo-1541643600914-78b084683601"},
+{nome:"Perfume 2",preco:420,img:"https://images.unsplash.com/photo-1585386959984-a41552231658"},
+{nome:"Perfume 3",preco:390,img:"https://images.unsplash.com/photo-1600180758890-6b94519a8ba3"},
+{nome:"Perfume 4",preco:450,img:"https://images.unsplash.com/photo-1595425970377-7f0b9e7d7b2f"},
+{nome:"Perfume 5",preco:480,img:"https://images.unsplash.com/photo-1615634260167-c8cdede054de"},
+{nome:"Perfume 6",preco:360,img:"https://images.unsplash.com/photo-1523293182086-7651a899d37f"},
+{nome:"Perfume 7",preco:510,img:"https://images.unsplash.com/photo-1587019158091-1a103c5dd17f"},
+{nome:"Perfume 8",preco:430,img:"https://images.unsplash.com/photo-1592914610354-fd354ea45e48"},
+{nome:"Perfume 9",preco:370,img:"https://images.unsplash.com/photo-1600185365483-26d7a4cc7519"},
+{nome:"Perfume 10",preco:460,img:"https://images.unsplash.com/photo-1615634260167-c8cdede054de"},
+{nome:"Perfume 11",preco:390,img:"https://images.unsplash.com/photo-1585386959984-a41552231658"},
+{nome:"Perfume 12",preco:520,img:"https://images.unsplash.com/photo-1541643600914-78b084683601"}
 
 ]
 
@@ -361,7 +411,7 @@ grid.innerHTML+=`
 
 <h3>${p.nome}</h3>
 
-<p>${p.desc}</p>
+<p>Fragrância sofisticada e marcante.</p>
 
 <div class="price">R$ ${p.preco}</div>
 
@@ -443,9 +493,7 @@ html+=`
 <div class="qty">
 
 <button onclick="alterar('${i.nome}',-1)">-</button>
-
 <span>${i.qtd}</span>
-
 <button onclick="alterar('${i.nome}',1)">+</button>
 
 </div>
