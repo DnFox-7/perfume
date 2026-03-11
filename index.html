@@ -1,5 +1,4 @@
-```html
-<!DOCTYPE html>
+
 <html lang="pt-BR">
 
 <head>
@@ -9,7 +8,7 @@
 
 <title>Perfumes Importados</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
@@ -18,18 +17,18 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:Poppins;
+scroll-behavior:smooth;
 }
 
 body{
-background:#f6f6f6;
-color:#222;
+background:#f4f4f4;
 }
 
 /* NAVBAR */
 
 nav{
 
-background:#0b0b0b;
+background:#000;
 color:white;
 
 display:flex;
@@ -38,7 +37,8 @@ align-items:center;
 
 padding:18px 6%;
 
-position:sticky;
+position:fixed;
+width:100%;
 top:0;
 z-index:1000;
 
@@ -47,12 +47,12 @@ z-index:1000;
 .logo{
 font-size:22px;
 font-weight:600;
-letter-spacing:1px;
 }
 
 .menu{
 display:flex;
 gap:25px;
+align-items:center;
 }
 
 .menu a{
@@ -63,19 +63,44 @@ font-size:14px;
 
 }
 
-.menu a:hover{
-color:#d4af37;
+/* DROPDOWN */
+
+.dropdown{
+position:relative;
 }
 
-.whatsapp{
+.dropdown-content{
 
-background:#25D366;
-padding:10px 20px;
-border-radius:30px;
-text-decoration:none;
-color:white;
-font-size:14px;
+display:none;
 
+position:absolute;
+
+background:#111;
+
+top:30px;
+left:0;
+
+width:160px;
+
+border-radius:6px;
+
+}
+
+.dropdown-content a{
+
+display:block;
+padding:10px;
+
+font-size:13px;
+
+}
+
+.dropdown:hover .dropdown-content{
+display:block;
+}
+
+.menu a:hover{
+color:#d4af37;
 }
 
 /* HERO */
@@ -85,7 +110,7 @@ font-size:14px;
 height:420px;
 
 background:
-linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),
+linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
 url("https://images.unsplash.com/photo-1594035910387-fea47794261f");
 
 background-size:cover;
@@ -99,43 +124,24 @@ align-items:center;
 color:white;
 text-align:center;
 
+margin-top:70px;
+
 }
 
 .hero h1{
-font-size:46px;
-margin-bottom:10px;
-}
-
-.hero p{
-font-size:18px;
-}
-
-/* CONTAINER */
-
-.container{
-max-width:1300px;
-margin:auto;
-padding:50px 5%;
-
-display:grid;
-grid-template-columns:1fr 320px;
-gap:40px;
-}
-
-@media(max-width:900px){
-
-.container{
-grid-template-columns:1fr;
-}
-
+font-size:45px;
 }
 
 /* PRODUTOS */
 
-.grid{
+.produtos{
+
+max-width:1200px;
+margin:auto;
+padding:60px 5%;
 
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:30px;
 
 }
@@ -143,26 +149,21 @@ gap:30px;
 .card{
 
 background:white;
-border-radius:14px;
+
+border-radius:12px;
+
+box-shadow:0 8px 20px rgba(0,0,0,0.1);
+
 overflow:hidden;
 
-box-shadow:0 10px 25px rgba(0,0,0,0.08);
-
-transition:.3s;
-
-}
-
-.card:hover{
-
-transform:translateY(-8px);
-box-shadow:0 15px 40px rgba(0,0,0,0.18);
+text-align:center;
 
 }
 
 .card img{
 
 width:100%;
-height:230px;
+height:220px;
 object-fit:cover;
 
 }
@@ -170,146 +171,61 @@ object-fit:cover;
 .card-body{
 
 padding:20px;
-text-align:center;
 
-}
-
-.card h3{
-margin-bottom:10px;
-}
-
-.card p{
-font-size:13px;
-color:#666;
-margin-bottom:15px;
 }
 
 .price{
 
-font-size:20px;
-font-weight:600;
 color:#d4af37;
-margin-bottom:15px;
+font-weight:600;
+margin:10px 0;
 
 }
 
 .btn{
 
-background:#111;
+background:#000;
 color:white;
+
 border:none;
 
-padding:12px;
+padding:10px;
+
 width:100%;
 
-border-radius:8px;
 cursor:pointer;
 
 }
 
-.btn:hover{
-background:#d4af37;
-}
+/* SOBRE */
 
-/* CARRINHO */
-
-.cart{
+.sobre{
 
 background:white;
-padding:20px;
 
-border-radius:12px;
-
-box-shadow:0 10px 25px rgba(0,0,0,0.08);
-
-position:sticky;
-top:80px;
-
-}
-
-.cart h2{
-margin-bottom:15px;
-}
-
-.cart-item{
-
-border-bottom:1px solid #eee;
-padding:10px 0;
-
-}
-
-.qty{
-
-display:flex;
-gap:6px;
-margin-top:5px;
-
-}
-
-.qty button{
-
-width:25px;
-height:25px;
-
-border:none;
-
-background:#d4af37;
-color:white;
-
-border-radius:4px;
-cursor:pointer;
-
-}
-
-.remove{
-
-color:red;
-font-size:12px;
-cursor:pointer;
-
-}
-
-.total{
-
-margin-top:15px;
-font-weight:600;
-
-display:flex;
-justify-content:space-between;
-
-}
-
-.btn-zap{
-
-margin-top:15px;
-
-background:#25D366;
-
-border:none;
-width:100%;
-
-padding:14px;
-
-border-radius:8px;
-
-color:white;
-font-weight:600;
-
-cursor:pointer;
-
-}
-
-/* FOOTER */
-
-footer{
-
-margin-top:40px;
-background:#111;
-color:#aaa;
+padding:60px 10%;
 
 text-align:center;
 
+}
+
+/* CONTATO */
+
+.contato{
+
+padding:60px 10%;
+text-align:center;
+
+}
+
+footer{
+
+background:#111;
+color:#aaa;
+
 padding:30px;
+
+text-align:center;
 
 }
 
@@ -325,221 +241,184 @@ padding:30px;
 
 <div class="menu">
 
-<a href="#">Início</a>
-<a href="#">Perfumes</a>
-<a href="#">Contato</a>
+<a href="#home">Home</a>
+
+<div class="dropdown">
+
+<a href="#produtos">Produtos</a>
+
+<div class="dropdown-content">
+
+<a href="#p1">Perfume 1</a>
+<a href="#p2">Perfume 2</a>
+<a href="#p3">Perfume 3</a>
+<a href="#p4">Perfume 4</a>
+<a href="#p5">Perfume 5</a>
+<a href="#p6">Perfume 6</a>
+<a href="#p7">Perfume 7</a>
+<a href="#p8">Perfume 8</a>
+<a href="#p9">Perfume 9</a>
+<a href="#p10">Perfume 10</a>
+<a href="#p11">Perfume 11</a>
+<a href="#p12">Perfume 12</a>
 
 </div>
 
-<a class="whatsapp" href="https://wa.me/5521965109590">
-WhatsApp
-</a>
+</div>
+
+<a href="#sobre">Sobre</a>
+<a href="#contato">Contato</a>
+
+</div>
 
 </nav>
 
-<section class="hero">
+<section class="hero" id="home">
 
 <h1>Perfumes Importados</h1>
-
-<p>Fragrâncias marcantes para todos os estilos</p>
+<p>Encontre a fragrância perfeita</p>
 
 </section>
 
-<div class="container">
+<section id="produtos" class="produtos">
 
-<div class="grid" id="produtos"></div>
+<!-- 12 perfumes -->
 
-<div class="cart">
-
-<h2>Seu pedido</h2>
-
-<div id="cart-items">
-Carrinho vazio
+<div class="card" id="p1">
+<img src="https://images.unsplash.com/photo-1541643600914-78b084683601">
+<div class="card-body">
+<h3>Perfume 1</h3>
+<div class="price">R$ 350</div>
+<button class="btn">Comprar</button>
+</div>
 </div>
 
-<div class="total">
-
-<span>Total</span>
-<span id="total">R$ 0</span>
-
+<div class="card" id="p2">
+<img src="https://images.unsplash.com/photo-1585386959984-a41552231658">
+<div class="card-body">
+<h3>Perfume 2</h3>
+<div class="price">R$ 380</div>
+<button class="btn">Comprar</button>
+</div>
 </div>
 
-<button class="btn-zap" onclick="checkout()">
-Finalizar no WhatsApp
-</button>
-
+<div class="card" id="p3">
+<img src="https://images.unsplash.com/photo-1600180758890-6b94519a8ba3">
+<div class="card-body">
+<h3>Perfume 3</h3>
+<div class="price">R$ 390</div>
+<button class="btn">Comprar</button>
+</div>
 </div>
 
+<div class="card" id="p4">
+<img src="https://images.unsplash.com/photo-1595425970377-7f0b9e7d7b2f">
+<div class="card-body">
+<h3>Perfume 4</h3>
+<div class="price">R$ 420</div>
+<button class="btn">Comprar</button>
 </div>
+</div>
+
+<div class="card" id="p5">
+<img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de">
+<div class="card-body">
+<h3>Perfume 5</h3>
+<div class="price">R$ 410</div>
+<button class="btn">Comprar</button>
+</div>
+</div>
+
+<div class="card" id="p6">
+<img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f">
+<div class="card-body">
+<h3>Perfume 6</h3>
+<div class="price">R$ 370</div>
+<button class="btn">Comprar</button>
+</div>
+</div>
+
+<div class="card" id="p7">
+<img src="https://images.unsplash.com/photo-1587019158091-1a103c5dd17f">
+<div class="card-body">
+<h3>Perfume 7</h3>
+<div class="price">R$ 430</div>
+<button class="btn">Comprar</button>
+</div>
+</div>
+
+<div class="card" id="p8">
+<img src="https://images.unsplash.com/photo-1592914610354-fd354ea45e48">
+<div class="card-body">
+<h3>Perfume 8</h3>
+<div class="price">R$ 390</div>
+<button class="btn">Comprar</button>
+</div>
+</div>
+
+<div class="card" id="p9">
+<img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519">
+<div class="card-body">
+<h3>Perfume 9</h3>
+<div class="price">R$ 360</div>
+<button class="btn">Comprar</button>
+</div>
+</div>
+
+<div class="card" id="p10">
+<img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de">
+<div class="card-body">
+<h3>Perfume 10</h3>
+<div class="price">R$ 450</div>
+<button class="btn">Comprar</button>
+</div>
+</div>
+
+<div class="card" id="p11">
+<img src="https://images.unsplash.com/photo-1585386959984-a41552231658">
+<div class="card-body">
+<h3>Perfume 11</h3>
+<div class="price">R$ 410</div>
+<button class="btn">Comprar</button>
+</div>
+</div>
+
+<div class="card" id="p12">
+<img src="https://images.unsplash.com/photo-1541643600914-78b084683601">
+<div class="card-body">
+<h3>Perfume 12</h3>
+<div class="price">R$ 470</div>
+<button class="btn">Comprar</button>
+</div>
+</div>
+
+</section>
+
+<section class="sobre" id="sobre">
+
+<h2>Sobre</h2>
+
+<p>
+Trabalhamos com perfumes importados selecionados,
+oferecendo fragrâncias marcantes e de alta qualidade.
+</p>
+
+</section>
+
+<section class="contato" id="contato">
+
+<h2>Contato</h2>
+
+<p>WhatsApp: (21) 96510-9590</p>
+<p>Email: contato@email.com</p>
+
+</section>
 
 <footer>
 
-Perfumes Importados • Atendimento via WhatsApp
+Perfumes Importados • Todos os direitos reservados
 
 </footer>
-
-<script>
-
-const produtos=[
-
-{nome:"Perfume 1",preco:350,img:"https://images.unsplash.com/photo-1541643600914-78b084683601"},
-{nome:"Perfume 2",preco:420,img:"https://images.unsplash.com/photo-1585386959984-a41552231658"},
-{nome:"Perfume 3",preco:390,img:"https://images.unsplash.com/photo-1600180758890-6b94519a8ba3"},
-{nome:"Perfume 4",preco:450,img:"https://images.unsplash.com/photo-1595425970377-7f0b9e7d7b2f"},
-{nome:"Perfume 5",preco:480,img:"https://images.unsplash.com/photo-1615634260167-c8cdede054de"},
-{nome:"Perfume 6",preco:360,img:"https://images.unsplash.com/photo-1523293182086-7651a899d37f"},
-{nome:"Perfume 7",preco:510,img:"https://images.unsplash.com/photo-1587019158091-1a103c5dd17f"},
-{nome:"Perfume 8",preco:430,img:"https://images.unsplash.com/photo-1592914610354-fd354ea45e48"},
-{nome:"Perfume 9",preco:370,img:"https://images.unsplash.com/photo-1600185365483-26d7a4cc7519"},
-{nome:"Perfume 10",preco:460,img:"https://images.unsplash.com/photo-1615634260167-c8cdede054de"},
-{nome:"Perfume 11",preco:390,img:"https://images.unsplash.com/photo-1585386959984-a41552231658"},
-{nome:"Perfume 12",preco:520,img:"https://images.unsplash.com/photo-1541643600914-78b084683601"}
-
-]
-
-const grid=document.getElementById("produtos")
-
-produtos.forEach(p=>{
-
-grid.innerHTML+=`
-
-<div class="card">
-
-<img src="${p.img}">
-
-<div class="card-body">
-
-<h3>${p.nome}</h3>
-
-<p>Fragrância sofisticada e marcante.</p>
-
-<div class="price">R$ ${p.preco}</div>
-
-<button class="btn" onclick="add('${p.nome}',${p.preco})">
-Adicionar ao carrinho
-</button>
-
-</div>
-
-</div>
-
-`
-
-})
-
-let cart=[]
-
-function add(nome,preco){
-
-const item=cart.find(i=>i.nome===nome)
-
-if(item){
-item.qtd++
-}else{
-cart.push({nome,preco,qtd:1})
-}
-
-render()
-
-}
-
-function alterar(nome,valor){
-
-const item=cart.find(i=>i.nome===nome)
-
-item.qtd+=valor
-
-if(item.qtd<=0){
-cart=cart.filter(i=>i.nome!==nome)
-}
-
-render()
-
-}
-
-function remover(nome){
-
-cart=cart.filter(i=>i.nome!==nome)
-
-render()
-
-}
-
-function render(){
-
-const el=document.getElementById("cart-items")
-
-if(cart.length===0){
-
-el.innerHTML="Carrinho vazio"
-document.getElementById("total").innerText="R$ 0"
-return
-
-}
-
-let html=""
-let total=0
-
-cart.forEach(i=>{
-
-total+=i.preco*i.qtd
-
-html+=`
-
-<div class="cart-item">
-
-<strong>${i.nome}</strong>
-
-<div class="qty">
-
-<button onclick="alterar('${i.nome}',-1)">-</button>
-<span>${i.qtd}</span>
-<button onclick="alterar('${i.nome}',1)">+</button>
-
-</div>
-
-<div class="remove" onclick="remover('${i.nome}')">
-remover
-</div>
-
-</div>
-
-`
-
-})
-
-el.innerHTML=html
-document.getElementById("total").innerText="R$ "+total
-
-}
-
-function checkout(){
-
-if(cart.length===0){
-
-alert("Adicione produtos")
-
-return
-
-}
-
-let msg="Pedido:%0A"
-let total=0
-
-cart.forEach(i=>{
-
-msg+=`${i.qtd}x ${i.nome}%0A`
-total+=i.preco*i.qtd
-
-})
-
-msg+=`%0ATotal: R$ ${total}`
-
-window.open(`https://wa.me/5521965109590?text=${msg}`)
-
-}
-
-</script>
 
 </body>
 </html>
