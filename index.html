@@ -1,7 +1,5 @@
- 
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
 
 <meta charset="UTF-8">
@@ -18,20 +16,15 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:Poppins;
-scroll-behavior:smooth;
 }
 
 body{
-background:#f6f6f6;
+background:#f5f5f5;
 }
 
 /* NAVBAR */
 
 nav{
-
-position:fixed;
-top:0;
-width:100%;
 
 background:black;
 color:white;
@@ -40,72 +33,28 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 
-padding:18px 8%;
+padding:20px 8%;
 
-z-index:999;
+position:sticky;
+top:0;
 
 }
 
-.logo{
-font-size:22px;
-font-weight:600;
-}
-
-.menu{
-display:flex;
-gap:25px;
-align-items:center;
-}
-
-.menu a{
+nav a{
 color:white;
 text-decoration:none;
-font-size:14px;
+margin-left:25px;
 }
 
-.menu a:hover{
+nav a:hover{
 color:#d4af37;
-}
-
-/* dropdown */
-
-.dropdown{
-position:relative;
-}
-
-.dropdown-content{
-
-display:none;
-
-position:absolute;
-
-top:30px;
-background:#111;
-
-border-radius:8px;
-
-width:170px;
-
-}
-
-.dropdown-content a{
-
-display:block;
-padding:10px;
-
-font-size:13px;
-
-}
-
-.dropdown:hover .dropdown-content{
-display:block;
 }
 
 /* HERO */
 
 .hero{
 
-height:420px;
+height:300px;
 
 background:
 linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
@@ -115,41 +64,59 @@ background-size:cover;
 background-position:center;
 
 display:flex;
-flex-direction:column;
-justify-content:center;
 align-items:center;
+justify-content:center;
 
 color:white;
-text-align:center;
-
-margin-top:70px;
+font-size:40px;
 
 }
 
-.hero h1{
-font-size:42px;
+/* FILTRO */
+
+.filtros{
+
+display:flex;
+justify-content:center;
+gap:15px;
+
+margin:40px 0;
+
 }
 
-/* SEÇÕES */
+.filtros button{
 
-section{
-padding:70px 10%;
+border:none;
+padding:10px 18px;
+
+background:white;
+cursor:pointer;
+
+border-radius:30px;
+
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+
 }
 
-.section-title{
-font-size:30px;
-margin-bottom:30px;
+.filtros button:hover{
+background:#d4af37;
+color:white;
 }
 
 /* GRID */
 
-.grid{
+.produtos{
+
+max-width:1200px;
+margin:auto;
 
 display:grid;
 
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
 
-gap:30px;
+gap:25px;
+
+padding:20px;
 
 }
 
@@ -159,11 +126,11 @@ gap:30px;
 
 background:white;
 
-border-radius:12px;
-
-box-shadow:0 10px 25px rgba(0,0,0,0.1);
+border-radius:10px;
 
 overflow:hidden;
+
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
 
 transition:0.3s;
 
@@ -171,8 +138,7 @@ transition:0.3s;
 
 .card:hover{
 
-transform:translateY(-8px);
-box-shadow:0 15px 35px rgba(0,0,0,0.2);
+transform:translateY(-6px);
 
 }
 
@@ -184,17 +150,14 @@ object-fit:cover;
 
 }
 
-.card-body{
-padding:20px;
-text-align:center;
+.info{
+padding:15px;
 }
 
-.price{
-
+.preco{
 color:#d4af37;
 font-weight:600;
-margin:10px 0;
-
+margin:8px 0;
 }
 
 .btn{
@@ -203,45 +166,11 @@ background:black;
 color:white;
 
 border:none;
-
 padding:10px;
 
 width:100%;
 
 cursor:pointer;
-
-border-radius:5px;
-
-}
-
-/* SOBRE */
-
-.sobre{
-background:white;
-text-align:center;
-}
-
-/* CONTATO */
-
-.contato{
-text-align:center;
-}
-
-.whatsapp{
-
-display:inline-block;
-
-margin-top:20px;
-
-background:#25D366;
-
-color:white;
-
-padding:12px 25px;
-
-border-radius:30px;
-
-text-decoration:none;
 
 }
 
@@ -250,240 +179,192 @@ footer{
 background:#111;
 color:#aaa;
 
-padding:30px;
 text-align:center;
+
+padding:30px;
+margin-top:50px;
 
 }
 
 </style>
-
 </head>
 
 <body>
 
 <nav>
 
-<div class="logo">Moto Jhon</div>
+<h2>Moto Jhon</h2>
 
-<div class="menu">
-
-<a href="#home">Home</a>
-
-<div class="dropdown">
-
-<a href="#produtos">Produtos</a>
-
-<div class="dropdown-content">
-
-<a href="#amadeirado">Amadeirado</a>
-<a href="#citrico">Cítrico</a>
-<a href="#doce">Doce</a>
-<a href="#oriental">Oriental</a>
-
-</div>
-
-</div>
-
-<a href="#sobre">Sobre</a>
-<a href="#contato">Contato</a>
-
+<div>
+<a href="#">Home</a>
+<a href="#">Produtos</a>
+<a href="#">Sobre</a>
+<a href="#">Contato</a>
 </div>
 
 </nav>
 
-<section class="hero" id="home">
+<div class="hero">
+Perfumes Premium
+</div>
 
-<h1>Perfumes Premium</h1>
-<p>Fragrâncias exclusivas para marcar presença</p>
+<!-- FILTROS -->
 
-</section>
+<div class="filtros">
 
-<!-- AMADEIRADO -->
+<button onclick="filtrar('todos')">Todos</button>
+<button onclick="filtrar('amadeirado')">Amadeirado</button>
+<button onclick="filtrar('citrico')">Cítrico</button>
+<button onclick="filtrar('doce')">Doce</button>
+<button onclick="filtrar('oriental')">Oriental</button>
 
-<section id="amadeirado">
+</div>
 
-<h2 class="section-title">Perfumes Amadeirados</h2>
+<!-- PRODUTOS -->
 
-<div class="grid">
+<div class="produtos">
 
-<div class="card">
+<div class="card amadeirado">
 <img src="https://images.unsplash.com/photo-1541643600914-78b084683601">
-<div class="card-body">
+<div class="info">
 <h3>Perfume 1</h3>
-<div class="price">R$ 390</div>
+<div class="preco">R$390</div>
 <button class="btn">Comprar</button>
 </div>
 </div>
 
-<div class="card">
+<div class="card amadeirado">
 <img src="https://images.unsplash.com/photo-1585386959984-a41552231658">
-<div class="card-body">
+<div class="info">
 <h3>Perfume 2</h3>
-<div class="price">R$ 420</div>
+<div class="preco">R$410</div>
 <button class="btn">Comprar</button>
 </div>
 </div>
 
-<div class="card">
+<div class="card amadeirado">
 <img src="https://images.unsplash.com/photo-1600180758890-6b94519a8ba3">
-<div class="card-body">
+<div class="info">
 <h3>Perfume 3</h3>
-<div class="price">R$ 410</div>
+<div class="preco">R$420</div>
 <button class="btn">Comprar</button>
 </div>
 </div>
 
-</div>
-
-</section>
-
-<!-- CITRICO -->
-
-<section id="citrico">
-
-<h2 class="section-title">Perfumes Cítricos</h2>
-
-<div class="grid">
-
-<div class="card">
+<div class="card citrico">
 <img src="https://images.unsplash.com/photo-1595425970377-7f0b9e7d7b2f">
-<div class="card-body">
+<div class="info">
 <h3>Perfume 4</h3>
-<div class="price">R$ 350</div>
+<div class="preco">R$350</div>
 <button class="btn">Comprar</button>
 </div>
 </div>
 
-<div class="card">
+<div class="card citrico">
 <img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de">
-<div class="card-body">
+<div class="info">
 <h3>Perfume 5</h3>
-<div class="price">R$ 360</div>
+<div class="preco">R$360</div>
 <button class="btn">Comprar</button>
 </div>
 </div>
 
-<div class="card">
+<div class="card citrico">
 <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f">
-<div class="card-body">
+<div class="info">
 <h3>Perfume 6</h3>
-<div class="price">R$ 380</div>
+<div class="preco">R$380</div>
 <button class="btn">Comprar</button>
 </div>
 </div>
 
-</div>
-
-</section>
-
-<!-- DOCE -->
-
-<section id="doce">
-
-<h2 class="section-title">Perfumes Doces</h2>
-
-<div class="grid">
-
-<div class="card">
+<div class="card doce">
 <img src="https://images.unsplash.com/photo-1587019158091-1a103c5dd17f">
-<div class="card-body">
+<div class="info">
 <h3>Perfume 7</h3>
-<div class="price">R$ 430</div>
+<div class="preco">R$430</div>
 <button class="btn">Comprar</button>
 </div>
 </div>
 
-<div class="card">
+<div class="card doce">
 <img src="https://images.unsplash.com/photo-1592914610354-fd354ea45e48">
-<div class="card-body">
+<div class="info">
 <h3>Perfume 8</h3>
-<div class="price">R$ 440</div>
+<div class="preco">R$440</div>
 <button class="btn">Comprar</button>
 </div>
 </div>
 
-<div class="card">
+<div class="card doce">
 <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519">
-<div class="card-body">
+<div class="info">
 <h3>Perfume 9</h3>
-<div class="price">R$ 410</div>
+<div class="preco">R$410</div>
 <button class="btn">Comprar</button>
 </div>
 </div>
 
-</div>
-
-</section>
-
-<!-- ORIENTAL -->
-
-<section id="oriental">
-
-<h2 class="section-title">Perfumes Orientais</h2>
-
-<div class="grid">
-
-<div class="card">
+<div class="card oriental">
 <img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de">
-<div class="card-body">
+<div class="info">
 <h3>Perfume 10</h3>
-<div class="price">R$ 470</div>
+<div class="preco">R$470</div>
 <button class="btn">Comprar</button>
 </div>
 </div>
 
-<div class="card">
+<div class="card oriental">
 <img src="https://images.unsplash.com/photo-1585386959984-a41552231658">
-<div class="card-body">
+<div class="info">
 <h3>Perfume 11</h3>
-<div class="price">R$ 450</div>
+<div class="preco">R$450</div>
 <button class="btn">Comprar</button>
 </div>
 </div>
 
-<div class="card">
+<div class="card oriental">
 <img src="https://images.unsplash.com/photo-1541643600914-78b084683601">
-<div class="card-body">
+<div class="info">
 <h3>Perfume 12</h3>
-<div class="price">R$ 480</div>
+<div class="preco">R$480</div>
 <button class="btn">Comprar</button>
 </div>
 </div>
 
 </div>
-
-</section>
-
-<section class="sobre" id="sobre">
-
-<h2>Sobre</h2>
-
-<p>
-Somos especialistas em fragrâncias premium.
-Selecionamos perfumes que marcam presença e estilo.
-</p>
-
-</section>
-
-<section class="contato" id="contato">
-
-<h2>Contato</h2>
-
-<p>WhatsApp: 21 96510-9590</p>
-<p>Email: motojhon@gmail.com</p>
-
-<a class="whatsapp" href="https://wa.me/5521965109590">
-Falar no WhatsApp
-</a>
-
-</section>
 
 <footer>
-
 Perfumes Premium © 2026
-
 </footer>
+
+<script>
+
+function filtrar(tipo){
+
+let produtos=document.querySelectorAll(".card")
+
+produtos.forEach(produto=>{
+
+if(tipo=="todos"){
+
+produto.style.display="block"
+
+}else if(produto.classList.contains(tipo)){
+
+produto.style.display="block"
+
+}else{
+
+produto.style.display="none"
+
+}
+
+})
+
+}
+
+</script>
 
 </body>
 </html>
-```
