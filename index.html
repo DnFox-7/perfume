@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Loja de Perfumes</title>
+<title>MOTO JHON</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -15,7 +16,7 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Poppins
+font-family:Poppins;
 }
 
 body{
@@ -57,6 +58,17 @@ color:gold;
 .cart-btn{
 cursor:pointer;
 font-size:22px;
+position:relative;
+}
+
+.cart-count{
+position:absolute;
+top:-8px;
+right:-10px;
+background:red;
+border-radius:50%;
+font-size:12px;
+padding:3px 6px;
 }
 
 /* HERO */
@@ -66,7 +78,6 @@ height:70vh;
 display:flex;
 align-items:center;
 justify-content:center;
-text-align:center;
 background:url("https://images.unsplash.com/photo-1595425970377-7f0b9e7d7b2f") center/cover;
 }
 
@@ -87,22 +98,21 @@ margin:120px 0 40px;
 .search input{
 padding:12px;
 width:300px;
-border:none;
 border-radius:6px;
+border:none;
 }
 
 /* CATEGORIAS */
 
 .categorias{
 text-align:center;
-margin-bottom:30px;
 }
 
 .categorias button{
 padding:10px 20px;
 margin:5px;
-border:none;
 background:#222;
+border:none;
 color:white;
 cursor:pointer;
 border-radius:6px;
@@ -127,8 +137,9 @@ padding:40px;
 background:#181818;
 border-radius:12px;
 overflow:hidden;
-transition:.3s;
+transition:.4s;
 box-shadow:0 10px 30px rgba(0,0,0,.5);
+cursor:pointer;
 }
 
 .card:hover{
@@ -140,6 +151,11 @@ box-shadow:0 15px 40px rgba(255,215,0,.3);
 width:100%;
 height:220px;
 object-fit:cover;
+transition:.4s;
+}
+
+.card:hover img{
+transform:scale(1.1);
 }
 
 .info{
@@ -147,14 +163,14 @@ padding:20px;
 text-align:center;
 }
 
+.estrelas{
+color:gold;
+}
+
 .preco{
 color:gold;
 font-size:20px;
 margin:10px 0;
-}
-
-.estrelas{
-color:gold;
 }
 
 .qtd{
@@ -167,9 +183,8 @@ margin:10px;
 background:gold;
 border:none;
 padding:10px 20px;
-cursor:pointer;
 border-radius:6px;
-font-weight:bold;
+cursor:pointer;
 }
 
 /* CARRINHO */
@@ -191,8 +206,10 @@ z-index:2000;
 right:0;
 }
 
-.cart h2{
-margin-bottom:20px;
+.close-cart{
+font-size:22px;
+cursor:pointer;
+float:right;
 }
 
 .cart-item{
@@ -228,38 +245,32 @@ color:white;
 font-weight:bold;
 }
 
-/* SOBRE */
+/* MODAL PERFUME */
 
-.sobre{
-padding:80px 40px;
-text-align:center;
-background:#111;
-}
-
-.sobre h2{
-margin-bottom:20px;
-}
-
-/* CONTATO */
-
-.contato{
-padding:80px 40px;
-text-align:center;
-}
-
-.contato a{
-color:gold;
-text-decoration:none;
-}
-
-/* MOBILE */
-
-@media(max-width:700px){
-
-.menu{
+.modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
 display:none;
+align-items:center;
+justify-content:center;
+z-index:3000;
 }
 
+.modal-content{
+background:#111;
+padding:30px;
+border-radius:10px;
+text-align:center;
+max-width:400px;
+}
+
+.modal img{
+width:100%;
+margin-bottom:20px;
 }
 
 </style>
@@ -268,38 +279,31 @@ display:none;
 
 <body>
 
-<!-- NAVBAR -->
-
 <nav>
 
-<div class="logo">Luxury Perfumes</div>
+<div class="logo">MOTO JHON</div>
 
 <div class="menu">
-
 <a href="#">Home</a>
 <a href="#produtos">Produtos</a>
 <a href="#sobre">Sobre</a>
 <a href="#contato">Contato</a>
-
 </div>
 
-<div class="cart-btn" onclick="toggleCart()">🛒</div>
+<div class="cart-btn" onclick="toggleCart()">
+🛒
+<span class="cart-count" id="cartCount">0</span>
+</div>
 
 </nav>
-
-<!-- HERO -->
 
 <section class="hero">
 <h1>Perfumes Importados</h1>
 </section>
 
-<!-- BUSCA -->
-
 <div class="search">
-<input type="text" placeholder="Buscar perfume..." id="search">
+<input type="text" id="search" placeholder="Buscar perfume...">
 </div>
-
-<!-- CATEGORIAS -->
 
 <div class="categorias">
 
@@ -311,13 +315,13 @@ display:none;
 
 </div>
 
-<!-- PRODUTOS -->
-
 <section class="produtos" id="produtos"></section>
 
 <!-- CARRINHO -->
 
 <div class="cart" id="cart">
+
+<span class="close-cart" onclick="toggleCart()">✖</span>
 
 <h2>Seu Carrinho</h2>
 
@@ -331,27 +335,23 @@ Finalizar no WhatsApp
 
 </div>
 
-<!-- SOBRE -->
+<!-- MODAL PERFUME -->
 
-<section id="sobre" class="sobre">
+<div class="modal" id="modal">
 
-<h2>Sobre nós</h2>
+<div class="modal-content">
 
-<p>Trabalhamos com perfumes importados de alta qualidade para quem busca elegância e sofisticação.</p>
+<img id="modalImg">
 
-</section>
+<h3 id="modalNome"></h3>
 
-<!-- CONTATO -->
+<p id="modalPreco"></p>
 
-<section id="contato" class="contato">
+<button onclick="fecharModal()">Fechar</button>
 
-<h2>Contato</h2>
+</div>
 
-<p>WhatsApp: 21 96510-9590</p>
-
-<p>Email: motojhon@gmail.com</p>
-
-</section>
+</div>
 
 <script>
 
@@ -391,7 +391,7 @@ lista.forEach((p,i)=>{
 
 html+=`
 
-<div class="card">
+<div class="card" onclick="abrirModal(${i})">
 
 <img src="${p.img}">
 
@@ -405,7 +405,7 @@ html+=`
 
 <input type="number" min="1" value="1" class="qtd" id="q${i}">
 
-<button class="btn" onclick="addCarrinho(${i})">
+<button class="btn" onclick="event.stopPropagation();addCarrinho(${i})">
 Adicionar
 </button>
 
@@ -451,12 +451,14 @@ function updateCart(){
 
 let html=""
 let total=0
+let itens=0
 
 carrinho.forEach((p,i)=>{
 
 let subtotal=p.preco*p.qtd
 
 total+=subtotal
+itens+=p.qtd
 
 html+=`
 
@@ -486,6 +488,7 @@ ${p.qtd}
 
 document.getElementById("cartItems").innerHTML=html
 document.getElementById("total").innerText="Total: R$ "+total
+document.getElementById("cartCount").innerText=itens
 
 let msg="Olá, quero comprar:%0A%0A"
 
@@ -524,6 +527,26 @@ updateCart()
 
 }
 
+function toggleCart(){
+document.getElementById("cart").classList.toggle("open")
+}
+
+function abrirModal(i){
+
+let p=produtos[i]
+
+document.getElementById("modal").style.display="flex"
+
+document.getElementById("modalImg").src=p.img
+document.getElementById("modalNome").innerText=p.name
+document.getElementById("modalPreco").innerText="R$ "+p.preco
+
+}
+
+function fecharModal(){
+document.getElementById("modal").style.display="none"
+}
+
 function filtrar(cat){
 
 if(cat==="todos") render(produtos)
@@ -538,10 +561,6 @@ let termo=this.value.toLowerCase()
 render(produtos.filter(p=>p.name.toLowerCase().includes(termo)))
 
 })
-
-function toggleCart(){
-document.getElementById("cart").classList.toggle("open")
-}
 
 updateCart()
 
